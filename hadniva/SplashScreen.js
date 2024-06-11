@@ -12,6 +12,7 @@ const SplashScreen = () => {
         style={styles.SplashScreenHadnivaLogo}
         source={require("./assets/HADNIVA LOGO.png")}
       />
+
       <View style={styles.SplashScreenWelcomeContainer}>
         <Text style={styles.text1}>WELCOME TO</Text>
         <Text style={styles.text2}>HADNIVA MULTIMEDIA</Text>
@@ -23,10 +24,16 @@ const SplashScreen = () => {
       <View style={styles.SplashScreenGettingStarted}>
         <Text style={styles.text4}>LET'S GET STARTED</Text>
       </View>
-      <Image
-        style={styles.SplashScreenBottomPicture}
-        source={require("./assets/Bottom picture.png")}
-      />
+      <View style={styles.SplashSCreenBottomContainer}>
+        <Image
+          style={styles.SplashScreenIlustrator}
+          source={require("./assets/Ilustrator 1.png")}
+        />
+        <Image
+          style={styles.SplashScreenBottomPicture}
+          source={require("./assets/Bottom picture.png")}
+        />
+      </View>
     </View>
   );
 };
@@ -41,7 +48,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#EEF7F8",
   },
   SplashScreenTopPicture: {
-    left: -60,
+    justifyContent: "flex-start",
+    left: -106,
+    position: "fixed",
   },
   SplashScreenHadnivaLogo: {
     width: 210,
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     textAlign: "center",
-    fontSize: 12,
+    fontSize: 13,
     letterSpacing: 2,
   },
   SplashScreenGettingStarted: {
@@ -93,9 +102,19 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     color: "#EEF7F8",
   },
+  SplashScreenIlustrator: {
+    justifyContent: "flex-start",
+  },
   SplashScreenBottomPicture: {
-    right: -60,
-    bottom: 10,
+    justifyContent: "flex-end",
+    right: -52,
+  },
+  SplashSCreenBottomContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "#EEF7F8",
+    width: "110%",
+    bottom: -210,
   },
 });
 

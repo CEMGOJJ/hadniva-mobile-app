@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 5,
     height: "100%",
+    width: "100%",
   },
 });
