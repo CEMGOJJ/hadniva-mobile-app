@@ -25,10 +25,12 @@ const SplashScreen = () => {
         <Text style={styles.text4}>LET'S GET STARTED</Text>
       </View>
       <View style={styles.SplashSCreenBottomContainer}>
+        <Text style={styles.TT}>Hello</Text>
         <Image
           style={styles.SplashScreenIlustrator}
           source={require("./assets/Ilustrator 1.png")}
         />
+
         <Image
           style={styles.SplashScreenBottomPicture}
           source={require("./assets/Bottom picture.png")}
@@ -104,17 +106,23 @@ const styles = StyleSheet.create({
   },
   SplashScreenIlustrator: {
     justifyContent: "flex-start",
+    right: -8,
   },
   SplashScreenBottomPicture: {
     justifyContent: "flex-end",
-    right: -52,
+    right: -5,
   },
   SplashSCreenBottomContainer: {
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#EEF7F8",
-    width: "110%",
-    bottom: -210,
+    top: 60,
+  },
+  TT: {
+    fontSize: 18,
+    right: -87,
+    top: 20,
+    zIndex: 1,
   },
 });
 
