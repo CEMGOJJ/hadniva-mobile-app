@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const SplashScreen = () => {
   return (
@@ -21,9 +21,11 @@ const SplashScreen = () => {
           stunning and user-friendly websites for businesses of all scopes{" "}
         </Text>
       </View>
-      <View style={styles.SplashScreenGettingStarted}>
-        <Text style={styles.text4}>LET'S GET STARTED</Text>
-      </View>
+      <TouchableOpacity>
+        <View style={styles.SplashScreenGettingStarted}>
+          <Text style={styles.text4}>LET'S GET STARTED</Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.SplashSCreenBottomContainer}>
         <Text style={styles.TT}>Hello</Text>
         <Image
@@ -57,13 +59,12 @@ const styles = StyleSheet.create({
   SplashScreenHadnivaLogo: {
     width: 210,
     height: 140,
-    top: -40,
+    top: -100,
   },
   SplashScreenWelcomeContainer: {
     width: 280,
     height: 130,
-    backgroundColor: "red",
-    top: -30,
+    top: -100,
     alignSelf: "center",
     display: "flex",
     flexDirection: "column",
@@ -73,20 +74,20 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontStyle: "italic",
-    fontSize: 13,
+    fontSize: 12,
     marginBottom: 5,
     letterSpacing: 2,
   },
   text2: {
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 20,
     marginBottom: 5,
     letterSpacing: 2,
   },
   text3: {
     textAlign: "center",
-    fontSize: 13,
-    letterSpacing: 2,
+    fontSize: 15,
+    letterSpacing: 1,
   },
   SplashScreenGettingStarted: {
     backgroundColor: "#04CFFA",
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     borderRadius: 20,
+    top: -60,
   },
   text4: {
     fontWeight: "bold",
@@ -110,17 +112,17 @@ const styles = StyleSheet.create({
   },
   SplashScreenBottomPicture: {
     justifyContent: "flex-end",
-    right: -5,
+    right: 50,
   },
   SplashSCreenBottomContainer: {
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#EEF7F8",
-    top: 60,
+    top: -5,
   },
   TT: {
-    fontSize: 18,
-    right: -87,
+    fontSize: 16,
+    right: -90,
     top: 20,
     zIndex: 1,
   },
