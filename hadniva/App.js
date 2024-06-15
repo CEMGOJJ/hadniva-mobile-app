@@ -7,8 +7,8 @@ export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        {/* <SplashScreen /> */}
-        <SignUp />
+        <SplashScreen />
+        {/* <SignUp /> */}
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

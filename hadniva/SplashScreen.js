@@ -1,42 +1,57 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { FontAwesome6 } from "@expo/vector-icons";
 
 const SplashScreen = () => {
   return (
     <View style={styles.SplashScreenMainContainer}>
-      <Image
-        style={styles.SplashScreenTopPicture}
-        source={require("./assets/top picture.png")}
-      />
-      <Image
-        style={styles.SplashScreenHadnivaLogo}
-        source={require("./assets/HADNIVA LOGO.png")}
-      />
-
-      <View style={styles.SplashScreenWelcomeContainer}>
-        <Text style={styles.text1}>WELCOME TO</Text>
-        <Text style={styles.text2}>HADNIVA MULTIMEDIA</Text>
-        <Text style={styles.text3}>
-          Aleading-edge website design agency in Ghana, crafting visually
-          stunning and user-friendly websites for businesses of all scopes{" "}
+      <View style={styles.miniContainer1}>
+        <Image
+          style={styles.SplashScreenTopPicture}
+          source={require("./assets/top picture.png")}
+        />
+      </View>
+      <View style={styles.miniContainer2}>
+        <Image
+          style={styles.SplashScreenHadnivaLogo}
+          source={require("./assets/HADNIVA LOGO.png")}
+        />
+      </View>
+      <View style={styles.miniContainer3}>
+        <Text style={styles.Text1}>WELCOME TO </Text>
+        <Text style={styles.Text2}>HADNIVA MULTIMEDIA</Text>
+        <Text style={styles.Text3}>
+          A leading-edge website design agency in Ghana, crafting visually
+          stuuning and user-friendly website for business of all scopes.
         </Text>
       </View>
-      <TouchableOpacity>
-        <View style={styles.SplashScreenGettingStarted}>
-          <Text style={styles.text4}>LET'S GET STARTED</Text>
+      <View style={styles.miniContainer4}>
+        <TouchableOpacity>
+          <View style={styles.Button}>
+            <Text style={styles.Text4}>LET'S GET STARTED</Text>
+            <FontAwesome6
+              style={styles.arrow}
+              name="arrow-right-long"
+              size={19}
+              color="white"
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.miniContainer5}>
+        <View style={styles.divisor1}>
+          <Text style={styles.Text5}>Hello</Text>
+          <Image
+            style={styles.SplashScreenIlustrator}
+            source={require("./assets/Ilustrator 1.png")}
+          />
         </View>
-      </TouchableOpacity>
-      <View style={styles.SplashSCreenBottomContainer}>
-        <Text style={styles.TT}>Hello</Text>
-        <Image
-          style={styles.SplashScreenIlustrator}
-          source={require("./assets/Ilustrator 1.png")}
-        />
-
-        <Image
-          style={styles.SplashScreenBottomPicture}
-          source={require("./assets/Bottom picture.png")}
-        />
+        <View style={styles.divisor2}>
+          <Image
+            style={styles.SplashScreenBottomPicture}
+            source={require("./assets/Bottom picture.png")}
+          />
+        </View>
       </View>
     </View>
   );
@@ -47,84 +62,120 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    alignContent: "center",
+    justifyContent: "space-between",
     height: "100%",
     backgroundColor: "#EEF7F8",
   },
-  SplashScreenTopPicture: {
-    justifyContent: "flex-start",
-    left: -106,
-    position: "fixed",
-  },
-  SplashScreenHadnivaLogo: {
-    width: 210,
-    height: 140,
-    top: -100,
-  },
-  SplashScreenWelcomeContainer: {
-    width: 280,
-    height: 130,
-    top: -100,
-    alignSelf: "center",
+  miniContainer1: {
+    width: "100%",
+    height: 180,
+
     display: "flex",
-    flexDirection: "column",
+    alignItems: "left",
+  },
+  SplashScreenTopPicture: {
+    height: 175,
+    width: 215,
+  },
+  miniContainer2: {
+    width: "100%",
+    height: 100,
+
     alignItems: "center",
-    padding: 10,
-    backgroundColor: "#EEF7F8",
+    justifyContent: "center",
   },
-  text1: {
-    fontStyle: "italic",
-    fontSize: 12,
-    marginBottom: 5,
-    letterSpacing: 2,
-  },
-  text2: {
-    fontWeight: "bold",
-    fontSize: 20,
-    marginBottom: 5,
-    letterSpacing: 2,
-  },
-  text3: {
-    textAlign: "center",
+  Text1: {
     fontSize: 15,
+    fontWeight: "300",
+    textAlign: "center",
+    opacity: 0.5,
+  },
+  Text2: {
+    fontSize: 18,
+    fontWeight: "900",
+    textAlign: "center",
     letterSpacing: 1,
   },
-  SplashScreenGettingStarted: {
-    backgroundColor: "#04CFFA",
-    width: 200,
-    height: 40,
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
-    borderRadius: 20,
-    top: -60,
+  Text3: {
+    fontSize: 15,
+    fontWeight: "600",
+    textAlign: "center",
+    letterSpacing: 1,
+    opacity: 0.5,
   },
-  text4: {
-    fontWeight: "bold",
-    fontSize: 14,
-    marginBottom: 5,
-    letterSpacing: 2,
-    color: "#EEF7F8",
+  SplashScreenHadnivaLogo: {
+    width: 120,
+    height: "100%",
+  },
+  miniContainer3: {
+    width: "100%",
+
+    borderColor: "black",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  miniContainer4: {
+    width: "100%",
+    height: 40,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Button: {
+    height: 37,
+    width: 200,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    backgroundColor: "#04cffa",
+    borderRadius: 10,
+    flexDirection: "row",
+  },
+  arrow: {
+    opacity: 0.8,
+  },
+  Text4: {
+    fontSize: 15,
+    fontWeight: "900",
+    color: "white",
+    opacity: 0.8,
+  },
+  miniContainer5: {
+    width: "100%",
+    height: 190,
+
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  divisor1: {
+    width: "49.5%",
+    height: "100%",
+  },
+  divisor2: {
+    width: "49.5%",
+    height: "100%",
+
+    alignItems: "right",
   },
   SplashScreenIlustrator: {
-    justifyContent: "flex-start",
-    right: -8,
+    width: "100%",
+    height: "100%",
+    top: -20,
   },
   SplashScreenBottomPicture: {
-    justifyContent: "flex-end",
-    right: 50,
+    width: "100%",
+    height: "100%",
   },
-  SplashSCreenBottomContainer: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "#EEF7F8",
-    top: -5,
-  },
-  TT: {
-    fontSize: 16,
-    right: -90,
-    top: 20,
+  Text5: {
     zIndex: 1,
+    fontSize: 15,
+    color: "black",
+    textAlign: "center",
+    opacity: 0.6,
+    fontWeight: "600",
+    left: -20,
   },
 });
 
