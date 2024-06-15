@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   miniContainer3: {
     width: "100%",
-
+    height: 150,
     borderColor: "black",
     justifyContent: "space-evenly",
     flexDirection: "column",

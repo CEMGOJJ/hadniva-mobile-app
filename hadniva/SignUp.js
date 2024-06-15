@@ -324,8 +324,8 @@ const styles = StyleSheet.create({
   },
   Text6: {
     fontSize: 15,
-    color: "#3EAEC7",
-    fontWeight: "600",
+    color: "#AEDCE6",
+    fontWeight: "700",
     marginLeft: 7,
   },
 });

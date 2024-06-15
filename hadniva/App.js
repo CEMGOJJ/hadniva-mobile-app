@@ -2,13 +2,15 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import SplashScreen from "./SplashScreen";
 import SignUp from "./SignUp";
+import OTP from "./OTP";
 
 export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <SplashScreen />
-        {/* <SignUp /> */}
+        {/* <SplashScreen /> */}
+        <SignUp />
+        {/* <OTP /> */}
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
