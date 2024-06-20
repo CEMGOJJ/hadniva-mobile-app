@@ -1,333 +1,212 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import { FontAwesome6 } from "@expo/vector-icons";
+//import { Checkbox } from '@react-native-community/checkbox';
+import React, { useState } from 'react';
+import { View,Image, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar, Alert } from 'react-native';
+//import CheckBox from '@react-native-community/checkbox';
+import { FontAwesome, Ionicons, AntDesign } from '@expo/vector-icons';
+import CheckBox from 'expo-checkbox';
+const App = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [agree, setAgree] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-import { Zocial } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-const SignUp = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
-  const handleCheckBoxChange = () => {
-    setIsChecked(!isChecked);
+  const handleSignUp = () => {
+    if (!username || !email || !password || !confirmPassword) {
+      Alert.alert('Error', 'Please fill all the fields');
+      return;
+    }
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match');
+      return;
+    }
+    if (!agree) {
+      Alert.alert('Error', 'You must agree to the Privacy and Policy');
+      return;
+    }
+
+  
+    Alert.alert('Success', 'You have signed up successfully!');
   };
 
   return (
-    <View style={styles.SignUpMainContainer}>
-      <View style={styles.miniContainer1}>
-        <View style={styles.ImageContainer}>
-          <Image
-            style={styles.SignUpHadnivaLogo}
-            source={require("./assets/hadniva-removebg-preview 1.png")}
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" />
+      
+      <Image
+            source={require('./assets/WhatsApp Image 2024-06-12 at 10.18.16.jpeg')}
+            style={styles.hadniva}
           />
-        </View>
-        <View style={styles.TextContainer}>
-          <Text style={styles.Text1}>Sign Up To Get Started</Text>
-        </View>
+          <View style={{height: 10}}/>
+      <Text style={styles.header}>Sign Up To Get Started</Text>
+      
+      <View style={styles.inputContainer}>
+        <FontAwesome name="user" size={20} color="#000" />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
       </View>
-      <View style={styles.miniContainer2}>
-        <View style={styles.TextInputsContainer}>
-          <View style={styles.Input1}>
-            <FontAwesome6
-              style={styles.leftIcon}
-              name="user-large"
-              size={14}
-              color="black"
-            />
-            <TextInput style={styles.TextInput} placeholder="Username" />
-            <View style={styles.destro}></View>
-          </View>
-          <View style={styles.Input1}>
-            <Zocial
-              style={styles.leftIcon}
-              name="email"
-              size={14}
-              color="black"
-            />
-            <TextInput style={styles.TextInput} placeholder="Email" />
-            <View style={styles.destro}></View>
-          </View>
-          <View style={styles.Input1}>
-            <FontAwesome5
-              style={styles.leftIcon}
-              name="lock"
-              size={15}
-              color="black"
-            />
-            <TextInput style={styles.TextInput} placeholder="Password" />
-            <Ionicons
-              style={styles.rightIcon}
-              name="eye-off"
-              size={15}
-              color="black"
-            />
-          </View>
-          <View style={styles.Input1}>
-            <FontAwesome5
-              style={styles.leftIcon}
-              name="lock"
-              size={15}
-              color="black"
-            />
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Confirm Password"
-            />
-            <Ionicons
-              style={styles.rightIcon}
-              name="eye-off"
-              size={15}
-              color="black"
-            />
-          </View>
-        </View>
-        <View style={styles.CheckBoxConatiner}>
-          <View style={styles.Check}></View>
-          <Text style={styles.Text2}>I agree with Privacy and Policy</Text>
-        </View>
+
+      <View style={styles.inputContainer}>
+        <FontAwesome name="envelope" size={20} color="#000" />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+        />
       </View>
-      <View style={styles.miniContainer3}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity>
-            <View style={styles.SignUpButton}>
-              <Text style={styles.Text3}>Sign Up</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.enquiryContainer}>
-          <Text style={styles.Text4}>or continue with</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <TouchableOpacity>
-            <Image
-              style={styles.icon1}
-              source={require("./assets/google.png")}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image
-              style={styles.icon1}
-              source={require("./assets/facebook.png")}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image
-              style={styles.icon1}
-              source={require("./assets/apple.png")}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.alreadyContainer}>
-          <Text style={styles.Text5}>Already have an account?</Text>
-          <TouchableOpacity>
-            <Text style={styles.Text6}>Login</Text>
-          </TouchableOpacity>
-        </View>
+
+      <View style={styles.inputContainer}>
+        <FontAwesome name="lock" size={20} color="#000" />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={!showPassword}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <Ionicons name={showPassword ? "eye" : "eye-off"} size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.inputContainer}>
+        <FontAwesome name="lock" size={20} color="#000" />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          secureTextEntry={!showConfirmPassword}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        <TouchableOpacity onPress={toggleConfirmPasswordVisibility}>
+          <Ionicons name={showConfirmPassword ? "eye" : "eye-off"} size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.checkboxContainer}>
+       <CheckBox
+          value={agree}
+          onValueChange={setAgree}
+        /> 
+        
+        <Text style={styles.checkboxText}>I agree with Privacy and Policy</Text>
+      </View>
+
+      <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
+        <Text style={styles.signUpButtonText}>Sign up</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.orContinueWithText}>or continue with</Text>
+
+      <View style={styles.socialIconsContainer}>
+        <AntDesign name="google" size={30} color="#DB4437" />
+        <FontAwesome name="facebook-square" size={30} color="#3b5998" />
+        <AntDesign name="apple1" size={30} color="#000" />
+      </View>
+
+      <View style={styles.footer}>
+        <Text>Already have an Account? </Text>
+        <TouchableOpacity>
+          <Text style={styles.logInText}>Log In</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  SignUpMainContainer: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    height: "100%",
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#EEF7F8",
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5',
+    padding: 20,
   },
-
-  miniContainer1: {
-    width: "90%",
-
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 100,
-    paddingTop: 2,
-    paddingBottom: 2,
-  },
-  ImageContainer: {
-    width: 300,
-    height: 60,
-
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  TextContainer: {
-    width: 300,
-    height: 30,
-
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Text1: {
+ /* logo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 20,
+  },*/
+  header: {
     fontSize: 20,
-    fontWeight: "700",
-    color: "black",
-    opacity: 0.6,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+    //color: '#77c3ec',
+    color: '#00BFFF',
   },
-  miniContainer2: {
-    width: "90%",
-
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 350,
-    paddingTop: 2,
-    paddingBottom: 2,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E0E0E0',
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    marginVertical: 10,
   },
-  TextInputsContainer: {
-    width: 300,
-
-    height: 310,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    flexDirection: "column",
+  input: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
   },
-  Input1: {
-    width: 290,
-    height: 50,
-
-    alignItems: "center",
-    justifyContent: "center",
-    display: "flex",
-    flexDirection: "row",
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
   },
-  leftIcon: {
-    left: 25,
-    zIndex: 1,
+  checkboxText: {
+    marginLeft: 10,
   },
-  rightIcon: {
-    right: 25,
-    zIndex: 1,
+  signUpButton: {
+    backgroundColor: '#00BFFF',
+    borderRadius: 25,
+    paddingVertical: 10,
+    alignItems: 'center',
+    marginVertical: 20,
   },
-  TextInput: {
-    width: "98%",
-    height: "98%",
-
-    borderRadius: 10,
-    paddingLeft: 35,
-    paddingRight: 35,
-    overflow: "hidden",
-    fontSize: 15,
-    fontWeight: "300",
-    backgroundColor: "#AEDCE6",
+  signUpButtonText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
-  destro: {
-    width: "5%",
-    height: "98%",
+  orContinueWithText: {
+    textAlign: 'center',
+    marginVertical: 10,
   },
-  CheckBoxConatiner: {
-    width: 300,
-
-    height: 30,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
+  socialIconsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginVertical: 20,
   },
-  Check: {
-    width: 18,
-    height: 18,
-    backgroundColor: "red",
-    borderWidth: 1,
-    borderColor: "black",
-    backgroundColor: "#AEDCE6",
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  Text2: {
-    fontsize: 15,
-    color: "black",
-    opacity: 0.5,
-    marginLeft: -13,
+  logInText: {
+    color: '#00BFFF',
+    fontWeight: 'bold',
   },
-  miniContainer3: {
-    width: "90%",
-
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 250,
-    paddingTop: 2,
-    paddingBottom: 2,
-  },
-  buttonContainer: {
-    width: "60%",
-
-    height: 60,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  SignUpButton: {
-    width: 90,
-    height: 40,
-
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#AEDCE6",
-  },
-  Text3: {
-    fontSize: 18,
-    fontWeight: "700",
-  },
-  enquiryContainer: {
-    width: "60%",
-
-    height: 40,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Text4: {
-    fontSize: 15,
-    color: "black",
-    opacity: 0.5,
-    fontWeight: "400",
-  },
-  iconContainer: {
-    width: "40%",
-
-    height: 40,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    flexDirection: "row",
-  },
-  icon1: {
-    height: 25,
-    width: 25,
-  },
-  alreadyContainer: {
-    width: 300,
-
-    height: 40,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Text5: {
-    fontSize: 15,
-    color: "black",
-    opacity: 0.5,
-    fontWeight: "400",
-  },
-  Text6: {
-    fontSize: 15,
-    color: "#AEDCE6",
-    fontWeight: "700",
-    marginLeft: 7,
-  },
+  hadniva: {
+    height: 80,
+    width: '100%',
+    borderRadius: 20,
+    marginLeft: 0,
+  }
 });
 
-export default SignUp;
+export default App;
