@@ -2,13 +2,15 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import SplashScreen1 from "./components/SplashScreen1";
 import LogIn from "./components/LogIn";
+import SignUp from "./components/SignUp";
 
 export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
         {/* <SplashScreen1 /> */}
-        <LogIn />
+        {/* <LogIn /> */}
+        <SignUp />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

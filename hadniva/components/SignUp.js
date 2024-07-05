@@ -1,213 +1,265 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  StatusBar,
-  Alert,
+  Image,
 } from "react-native";
 
-import { FontAwesome, Ionicons, AntDesign } from "@expo/vector-icons";
-
 const SignUp = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [agree, setAgree] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
-  const handleSignUp = () => {
-    if (!username || !email || !password || !confirmPassword) {
-      Alert.alert("Error", "Please fill all the fields");
-      return;
-    }
-    if (password !== confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
-      return;
-    }
-    if (!agree) {
-      Alert.alert("Error", "You must agree to the Privacy and Policy");
-      return;
-    }
-
-    Alert.alert("Success", "You have signed up successfully!");
-  };
-
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-
-      <View style={{ height: 10 }} />
-      <Text style={styles.header}>Sign Up To Get Started</Text>
-
-      <View style={styles.inputContainer}>
-        <FontAwesome name="user" size={20} color="#000" />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-        />
+    <View style={styles.SignMainContainer}>
+      <View style={styles.SignSubContainer1}>
+        <View style={styles.SignSubContainer1A}></View>
+        <View style={styles.SignSubContainer1B}>
+          <View style={styles.TextBox1}>
+            <Text style={styles.Text1}>Create an account</Text>
+          </View>
+          <View style={styles.TextBox2}>
+            <Text style={styles.Text2}>
+              Create your account, it takes less than a minute
+            </Text>
+            <Text style={styles.Text2}>Enter your email and password</Text>
+          </View>
+        </View>
       </View>
-
-      <View style={styles.inputContainer}>
-        <FontAwesome name="envelope" size={20} color="#000" />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-        />
+      <View style={styles.SignSubContainer2}>
+        <View style={styles.SignSubContainer2A}>
+          <TextInput style={styles.TextInput} placeholder="Email"></TextInput>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            secureTextEntry
+          ></TextInput>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Confirm Password"
+            secureTextEntry
+          ></TextInput>
+        </View>
+        <View style={styles.SignSubContainer2B}>
+          <TouchableOpacity>
+            <View style={styles.SignButton}>
+              <Text style={styles.ButtonText}>Sign up</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <View style={styles.inputContainer}>
-        <FontAwesome name="lock" size={20} color="#000" />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity onPress={togglePasswordVisibility}>
-          <Ionicons
-            name={showPassword ? "eye" : "eye-off"}
-            size={20}
-            color="#000"
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.inputContainer}>
-        <FontAwesome name="lock" size={20} color="#000" />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry={!showConfirmPassword}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-        />
-        <TouchableOpacity onPress={toggleConfirmPasswordVisibility}>
-          <Ionicons
-            name={showConfirmPassword ? "eye" : "eye-off"}
-            size={20}
-            color="#000"
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.checkboxContainer}>
-        {/* <CheckBox value={agree} onValueChange={setAgree} /> */}
-
-        <Text style={styles.checkboxText}>I agree with Privacy and Policy</Text>
-      </View>
-
-      <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
-        <Text style={styles.signUpButtonText}>Sign up</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.orContinueWithText}>or continue with</Text>
-
-      <View style={styles.socialIconsContainer}>
-        <AntDesign name="google" size={30} color="#DB4437" />
-        <FontAwesome name="facebook-square" size={30} color="#3b5998" />
-        <AntDesign name="apple1" size={30} color="#000" />
-      </View>
-
-      <View style={styles.footer}>
-        <Text>Already have an Account? </Text>
-        <TouchableOpacity>
-          <Text style={styles.logInText}>Log In</Text>
-        </TouchableOpacity>
+      <View style={styles.SignSubContainer3}>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3A}>
+          <View style={styles.Line}></View>
+          <Text style={styles.OrText}>Or sign in with</Text>
+          <View style={styles.Line}></View>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3B}>
+          <View style={styles.IconsBox}>
+            <View style={styles.Box}>
+              <Image source={require("../assets/google.png")} />
+            </View>
+            <View style={styles.Box}>
+              <Image source={require("../assets/linkedin.png")} />
+            </View>
+            <View style={styles.Box}>
+              <Image source={require("../assets/apple.png")} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3C}>
+          <Text style={styles.DontText}>Already have an account?</Text>
+          <Text style={styles.LoginText}>Login</Text>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-    padding: 20,
-  },
-
-  header: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-
-    color: "#00BFFF",
-  },
-  inputContainer: {
-    flexDirection: "row",
+  SignMainContainer: {
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "#E0E0E0",
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    marginVertical: 10,
-  },
-  input: {
-    flex: 1,
-    marginLeft: 10,
-    fontSize: 16,
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  checkboxText: {
-    marginLeft: 10,
-  },
-  signUpButton: {
-    backgroundColor: "#00BFFF",
-    borderRadius: 25,
-    paddingVertical: 10,
-    alignItems: "center",
-    marginVertical: 20,
-  },
-  signUpButtonText: {
-    color: "#FFF",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  orContinueWithText: {
-    textAlign: "center",
-    marginVertical: 10,
-  },
-  socialIconsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 20,
-  },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logInText: {
-    color: "#00BFFF",
-    fontWeight: "bold",
-  },
-  hadniva: {
-    height: 80,
+    justifyContent: "space-between",
+    height: "100%",
     width: "100%",
-    borderRadius: 20,
-    marginLeft: 0,
+    backgroundColor: "white",
+    paddingTop: 40,
+    alignSelf: "center",
+  },
+
+  SignSubContainer1: {
+    width: 350,
+    height: 140,
+
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 2,
+  },
+  SignSubContainer1A: {
+    width: 346,
+    height: 30,
+  },
+  SignSubContainer1B: {
+    width: 346,
+    height: 100,
+
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 2,
+  },
+  TextBox1: {
+    width: 342,
+    height: 30,
+  },
+  TextBox2: {
+    width: 342,
+    height: 50,
+  },
+  Text1: {
+    fontSize: 24,
+    fontWeight: "700",
+  },
+  Text2: {
+    fontSize: 16,
+    opacity: 0.5,
+    fontWeight: "normal",
+  },
+  SignSubContainer2: {
+    width: 350,
+    height: 280,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    padding: 2,
+  },
+  SignSubContainer2A: {
+    width: 346,
+    height: 200,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+  },
+  TextInput: {
+    borderWidth: 0.5,
+    borderColor: "grey",
+    height: 50,
+    width: 340,
+    paddingLeft: 20,
+    fontSize: 18,
+    borderRadius: 5,
+  },
+  SignSubContainer2B: {
+    width: 346,
+    height: 70,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  SignButton: {
+    borderWidth: 0.5,
+    borderColor: "grey",
+    height: 50,
+    width: 340,
+    backgroundColor: "#83CBDB",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+  },
+
+  ButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
+    opacity: 0.8,
+  },
+  SignSubContainer2C: {
+    width: 346,
+    height: 40,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ForgottenText: {
+    fontSize: 15,
+    opacity: 0.3,
+  },
+  LoginSubContainer3: {
+    width: 350,
+    height: 280,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    padding: 2,
+  },
+  SignSubContainer3A: {
+    width: 346,
+    height: 35,
+
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  Line: {
+    borderWidth: 0.5,
+    borderBlockColor: "grey",
+    width: 120,
+  },
+  OrText: {
+    fontSize: 14,
+    opacity: 0.7,
+    textAlign: "center",
+  },
+  SignSubContainer3B: {
+    width: 346,
+    height: 50,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  IconsBox: {
+    width: 246,
+    height: 44,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+  Box: {
+    height: 40,
+
+    width: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  SignSubContainer3C: {
+    width: 346,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  DontText: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  LoginText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#3EAEC7",
+    marginLeft: 5,
+  },
+  SignSubContainer3D: {
+    width: 346,
+    height: 35,
   },
 });
 
