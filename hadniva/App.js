@@ -1,16 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import SplashScreen from "./SplashScreen";
-import SignUp from "./SignUp";
-import OTP from "./OTP";
+import { StyleSheet, View, SafeAreaView } from "react-native";
+import SplashScreen1 from "./components/SplashScreen1";
+import LogIn from "./components/LogIn";
 
 export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        {/* <SplashScreen /> */}
-        <SignUp />
-        {/* <OTP /> */}
+        {/* <SplashScreen1 /> */}
+        <LogIn />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
@@ -23,6 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#EEF7F8",
     height: "100%",
     width: "100%",
-    paddingTop: 40,
   },
 });

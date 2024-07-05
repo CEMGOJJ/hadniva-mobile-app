@@ -2,6 +2,7 @@
   "name": "hadniva",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "type": "module",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -9,16 +10,20 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.7",
+    "@expo/metro-runtime": "~3.2.1",
     "@expo/vector-icons": "^14.0.0",
-    "expo": "^51.0.14",
+    "expo": "^51.0.17",
     "expo-status-bar": "~1.12.1",
     "node": "^22.3.0",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-icons": "^5.2.1",
-    "react-native": "0.74.2",
+    "react-native": "^0.74.3",
     "react-native-check-box": "^2.1.7",
     "react-native-elements": "^3.4.3",
-    "react-native-vector-icons": "^10.1.0"
+    "react-native-vector-icons": "^10.1.0",
+    "react-native-web": "~0.19.10"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

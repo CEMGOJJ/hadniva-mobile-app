@@ -1,14 +1,21 @@
-//import { Checkbox } from '@react-native-community/checkbox';
-import React, { useState } from 'react';
-import { View,Image, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar, Alert } from 'react-native';
-//import CheckBox from '@react-native-community/checkbox';
-import { FontAwesome, Ionicons, AntDesign } from '@expo/vector-icons';
-import CheckBox from 'expo-checkbox';
-const App = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+  Alert,
+} from "react-native";
+
+import { FontAwesome, Ionicons, AntDesign } from "@expo/vector-icons";
+
+const SignUp = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [agree, setAgree] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -23,33 +30,28 @@ const App = () => {
 
   const handleSignUp = () => {
     if (!username || !email || !password || !confirmPassword) {
-      Alert.alert('Error', 'Please fill all the fields');
+      Alert.alert("Error", "Please fill all the fields");
       return;
     }
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      Alert.alert("Error", "Passwords do not match");
       return;
     }
     if (!agree) {
-      Alert.alert('Error', 'You must agree to the Privacy and Policy');
+      Alert.alert("Error", "You must agree to the Privacy and Policy");
       return;
     }
 
-  
-    Alert.alert('Success', 'You have signed up successfully!');
+    Alert.alert("Success", "You have signed up successfully!");
   };
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      
-      <Image
-            source={require('./assets/WhatsApp Image 2024-06-12 at 10.18.16.jpeg')}
-            style={styles.hadniva}
-          />
-          <View style={{height: 10}}/>
+
+      <View style={{ height: 10 }} />
       <Text style={styles.header}>Sign Up To Get Started</Text>
-      
+
       <View style={styles.inputContainer}>
         <FontAwesome name="user" size={20} color="#000" />
         <TextInput
@@ -80,7 +82,11 @@ const App = () => {
           onChangeText={setPassword}
         />
         <TouchableOpacity onPress={togglePasswordVisibility}>
-          <Ionicons name={showPassword ? "eye" : "eye-off"} size={20} color="#000" />
+          <Ionicons
+            name={showPassword ? "eye" : "eye-off"}
+            size={20}
+            color="#000"
+          />
         </TouchableOpacity>
       </View>
 
@@ -94,16 +100,17 @@ const App = () => {
           onChangeText={setConfirmPassword}
         />
         <TouchableOpacity onPress={toggleConfirmPasswordVisibility}>
-          <Ionicons name={showConfirmPassword ? "eye" : "eye-off"} size={20} color="#000" />
+          <Ionicons
+            name={showConfirmPassword ? "eye" : "eye-off"}
+            size={20}
+            color="#000"
+          />
         </TouchableOpacity>
       </View>
 
       <View style={styles.checkboxContainer}>
-       <CheckBox
-          value={agree}
-          onValueChange={setAgree}
-        /> 
-        
+        {/* <CheckBox value={agree} onValueChange={setAgree} /> */}
+
         <Text style={styles.checkboxText}>I agree with Privacy and Policy</Text>
       </View>
 
@@ -132,27 +139,22 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: "#F5F5F5",
     padding: 20,
   },
- /* logo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginVertical: 20,
-  },*/
+
   header: {
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 20,
-    //color: '#77c3ec',
-    color: '#00BFFF',
+
+    color: "#00BFFF",
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#E0E0E0',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#E0E0E0",
     borderRadius: 25,
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -164,49 +166,49 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 10,
   },
   checkboxText: {
     marginLeft: 10,
   },
   signUpButton: {
-    backgroundColor: '#00BFFF',
+    backgroundColor: "#00BFFF",
     borderRadius: 25,
     paddingVertical: 10,
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 20,
   },
   signUpButtonText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   orContinueWithText: {
-    textAlign: 'center',
+    textAlign: "center",
     marginVertical: 10,
   },
   socialIconsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
     marginVertical: 20,
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   logInText: {
-    color: '#00BFFF',
-    fontWeight: 'bold',
+    color: "#00BFFF",
+    fontWeight: "bold",
   },
   hadniva: {
     height: 80,
-    width: '100%',
+    width: "100%",
     borderRadius: 20,
     marginLeft: 0,
-  }
+  },
 });
 
-export default App;
+export default SignUp;
