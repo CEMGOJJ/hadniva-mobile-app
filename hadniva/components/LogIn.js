@@ -1,5 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
 const LogIn = () => {
   return (
@@ -18,8 +25,54 @@ const LogIn = () => {
           </View>
         </View>
       </View>
-      <View style={styles.LoginSubContainer2}></View>
-      <View style={styles.LoginSubContainer3}></View>
+      <View style={styles.LoginSubContainer2}>
+        <View style={styles.LoginSubContainer2A}>
+          <TextInput style={styles.TextInput} placeholder="Email"></TextInput>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            secureTextEntry
+          ></TextInput>
+        </View>
+        <View style={styles.LoginSubContainer2B}>
+          <TouchableOpacity>
+            <View style={styles.LoginButton}>
+              <Text style={styles.ButtonText}>Login</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.LoginSubContainer2C}>
+          <Text style={styles.ForgottenText}>Forgot Password?</Text>
+        </View>
+      </View>
+      <View style={styles.LoginSubContainer3}>
+        <View style={styles.LoginSubContainer3D}></View>
+        <View style={styles.LoginSubContainer3A}>
+          <View style={styles.Line}></View>
+          <Text style={styles.OrText}>Or sign in with</Text>
+          <View style={styles.Line}></View>
+        </View>
+        <View style={styles.LoginSubContainer3D}></View>
+        <View style={styles.LoginSubContainer3B}>
+          <View style={styles.IconsBox}>
+            <View style={styles.Box}>
+              <Image source={require("../assets/google.png")} />
+            </View>
+            <View style={styles.Box}>
+              <Image source={require("../assets/linkedin.png")} />
+            </View>
+            <View style={styles.Box}>
+              <Image source={require("../assets/apple.png")} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.LoginSubContainer3D}></View>
+        <View style={styles.LoginSubContainer3C}>
+          <Text style={styles.DontText}>Don't have an account?</Text>
+          <Text style={styles.SignText}>Sign Up</Text>
+        </View>
+        <View style={styles.LoginSubContainer3D}></View>
+      </View>
     </View>
   );
 };
@@ -34,13 +87,13 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "white",
     paddingTop: 40,
+    alignSelf: "center",
   },
 
   LoginSubContainer1: {
     width: 350,
     height: 140,
-    borderWidth: 1,
-    borderColor: "black",
+
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
@@ -49,12 +102,11 @@ const styles = StyleSheet.create({
   LoginSubContainer1A: {
     width: 346,
     height: 30,
-    borderWidth: 1,
   },
   LoginSubContainer1B: {
     width: 346,
-    height: 90,
-    borderWidth: 1,
+    height: 100,
+
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
@@ -63,32 +115,150 @@ const styles = StyleSheet.create({
   TextBox1: {
     width: 342,
     height: 30,
-    borderWidth: 1,
   },
   TextBox2: {
     width: 342,
     height: 50,
-    borderWidth: 1,
   },
   Text1: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: "700",
   },
   Text2: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 16,
+    opacity: 0.5,
+    fontWeight: "normal",
   },
   LoginSubContainer2: {
     width: 350,
     height: 280,
-    borderWidth: 1,
-    borderColor: "black",
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    padding: 2,
+  },
+  LoginSubContainer2A: {
+    width: 346,
+    height: 130,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+  },
+  TextInput: {
+    borderWidth: 0.5,
+    borderColor: "grey",
+    height: 50,
+    width: 340,
+    paddingLeft: 20,
+    fontSize: 18,
+    borderRadius: 5,
+  },
+  LoginSubContainer2B: {
+    width: 346,
+    height: 70,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  LoginButton: {
+    borderWidth: 0.5,
+    borderColor: "grey",
+    height: 50,
+    width: 340,
+    backgroundColor: "#83CBDB",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+  },
+
+  ButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
+    opacity: 0.8,
+  },
+  LoginSubContainer2C: {
+    width: 346,
+    height: 40,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ForgottenText: {
+    fontSize: 15,
+    opacity: 0.3,
   },
   LoginSubContainer3: {
     width: 350,
     height: 280,
-    borderWidth: 1,
-    borderColor: "black",
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
+    padding: 2,
+  },
+  LoginSubContainer3A: {
+    width: 346,
+    height: 35,
+
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  Line: {
+    borderWidth: 0.5,
+    borderBlockColor: "grey",
+    width: 120,
+  },
+  OrText: {
+    fontSize: 14,
+    opacity: 0.7,
+    textAlign: "center",
+  },
+  LoginSubContainer3B: {
+    width: 346,
+    height: 50,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  IconsBox: {
+    width: 246,
+    height: 44,
+
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+  Box: {
+    height: 40,
+
+    width: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  LoginSubContainer3C: {
+    width: 346,
+    height: 40,
+
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  DontText: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  SignText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#3EAEC7",
+    marginLeft: 5,
+  },
+  LoginSubContainer3D: {
+    width: 346,
+    height: 35,
   },
 });
 
