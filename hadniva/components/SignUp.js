@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     fontSize: 20,
     fontWeight: "700",
-    opacity: 0.8,
+    color: "white",
   },
   SignSubContainer2C: {
     width: 346,

@@ -5,6 +5,7 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import OTPVerify from "./components/OTPVerify";
 import OTPNumber from "./components/OTPNumber";
+import OTPEmail from "./components/OTPEmail";
 
 export default function App() {
   return (
@@ -13,8 +14,9 @@ export default function App() {
         {/* <SplashScreen1 /> */}
         {/* <LogIn /> */}
         {/* <SignUp /> */}
-        {/* <OTPVerify /> */}
-        <OTPNumber />
+        <OTPVerify />
+        {/* <OTPNumber /> */}
+        {/* <OTPEmail /> */}
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

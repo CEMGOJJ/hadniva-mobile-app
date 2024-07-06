@@ -7,45 +7,45 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const OTPNumber = () => {
+const OTPEmail = () => {
   return (
-    <View style={styles.OTPNumberMainContainer}>
-      <View style={styles.OTPNumberSubContainer1}>
-        <View style={styles.OTPNumberSubContainer1A}></View>
-        <View style={styles.OTPNumberSubContainer1B}>
+    <View style={styles.OTPEmailMainContainer}>
+      <View style={styles.OTPEmailSubContainer1}>
+        <View style={styles.OTPEmailSubContainer1A}></View>
+        <View style={styles.OTPEmailSubContainer1B}>
           <View style={styles.TextBox1}>
             <Text style={styles.Text1}>OTP Verification</Text>
           </View>
           <View style={styles.TextBox2}>
             <Text style={styles.Text2}>
-              We'll send a one time password to this number.
+              We'll send a one time password to this email.
             </Text>
-            <Text style={styles.Text2}>Enter your number.</Text>
+            <Text style={styles.Text2}>Enter your email.</Text>
           </View>
         </View>
       </View>
-      <View style={styles.OTPNumberSubContainer2}>
+      <View style={styles.OTPEmailSubContainer2}>
         <TextInput style={styles.TextInput} keyboardType="numeric"></TextInput>
       </View>
-      <View style={styles.OTPNumberSubContainer3}>
-        <View style={styles.OTPNumberSubContainer3A}>
-          <Text style={styles.Recommend}>Use your email instead?</Text>
+      <View style={styles.OTPEmailSubContainer3}>
+        <View style={styles.OTPEmailSubContainer3A}>
+          <Text style={styles.Recommend}>Use your number instead?</Text>
         </View>
-        <View style={styles.OTPNumberSubContainer3B}>
+        <View style={styles.OTPEmailSubContainer3B}>
           <TouchableOpacity>
             <View style={styles.GetOPTButton}>
               <Text style={styles.ButtonText}>GET OTP</Text>
             </View>
           </TouchableOpacity>
         </View>
-        <View style={styles.OTPNumberSubContainer3C}></View>
+        <View style={styles.OTPEmailSubContainer3C}></View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  OTPNumberMainContainer: {
+  OTPEmailMainContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     alignSelf: "center",
   },
-  OTPNumberSubContainer1: {
+  OTPEmailSubContainer1: {
     width: 350,
     height: 140,
 
@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 2,
   },
-  OTPNumberSubContainer1A: {
+  OTPEmailSubContainer1A: {
     width: 346,
     height: 30,
   },
-  OTPNumberSubContainer1B: {
+  OTPEmailSubContainer1B: {
     width: 346,
     height: 100,
 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     fontWeight: "normal",
   },
-  OTPNumberSubContainer2: {
+  OTPEmailSubContainer2: {
     width: 350,
     height: 240,
 
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     textAlign: "center",
   },
-  OTPNumberSubContainer3: {
+  OTPEmailSubContainer3: {
     width: 350,
     height: 300,
 
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 2,
   },
-  OTPNumberSubContainer3A: {
+  OTPEmailSubContainer3A: {
     width: 346,
     height: 30,
 
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     opacity: 0.3,
   },
-  OTPNumberSubContainer3B: {
+  OTPEmailSubContainer3B: {
     width: 346,
     height: 60,
 
@@ -156,10 +156,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "white",
   },
-  OTPNumberSubContainer3C: {
+  OTPEmailSubContainer3C: {
     width: 346,
     height: 160,
   },
 });
 
-export default OTPNumber;
+export default OTPEmail;
