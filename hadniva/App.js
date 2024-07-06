@@ -9,6 +9,7 @@ import OTPEmail from "./components/OTPEmail";
 import PasswordRecoveryEmail from "./components/PasswordRecoveryEmail";
 import SetNewPassword from "./components/SetNewPassword";
 import SetProfilePicture from "./components/SetProfilePicture";
+import SplashScreen2 from "./components/SplashScreen2";
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
         {/* <OTPEmail /> */}
         {/* <PasswordRecoveryEmail /> */}
         {/* <SetNewPassword /> */}
-        <SetProfilePicture />
+        {/* <SetProfilePicture /> */}
+        <SplashScreen2 />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

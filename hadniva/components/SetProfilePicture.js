@@ -111,8 +111,7 @@ const styles = StyleSheet.create({
   SetProfilePictureSubContainer2: {
     width: 350,
     height: 240,
-    borderWidth: 1,
-    borderColor: "black",
+
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -122,8 +121,7 @@ const styles = StyleSheet.create({
   AB: {
     width: 250,
     height: 220,
-    borderWidth: 1,
-    borderColor: "black",
+
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "grey",
     borderRadius: 75,
     zIndex: -1,
     alignItems: "center",
@@ -143,8 +141,7 @@ const styles = StyleSheet.create({
   SetProfilePictureSubContainer2B: {
     width: 50,
     height: 50,
-    borderWidth: 1,
-    borderColor: "black",
+
     borderRadius: 25,
     zIndex: 1,
     top: 40,
@@ -176,7 +173,7 @@ const styles = StyleSheet.create({
   },
   Recommend: {
     fontSize: 16,
-    opacity: 0.3,
+    opacity: 0.7,
   },
   SetProfilePictureSubContainer3B: {
     width: 346,

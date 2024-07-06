@@ -4,14 +4,14 @@ import { FontAwesome6 } from "@expo/vector-icons";
 
 const SplashScreen1 = () => {
   return (
-    <View style={styles.SplashScreenMainContainer}>
+    <View style={styles.SplashScreen1MainContainer}>
       <Image source={require("../assets/splashcreen1-logo.png")} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  SplashScreenMainContainer: {
+  SplashScreen1MainContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
