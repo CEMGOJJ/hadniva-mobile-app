@@ -25,7 +25,7 @@ const OTPEmail = () => {
         </View>
       </View>
       <View style={styles.OTPEmailSubContainer2}>
-        <TextInput style={styles.TextInput} keyboardType="numeric"></TextInput>
+        <TextInput style={styles.TextInput}></TextInput>
       </View>
       <View style={styles.OTPEmailSubContainer3}>
         <View style={styles.OTPEmailSubContainer3A}>

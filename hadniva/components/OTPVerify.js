@@ -37,29 +37,28 @@ const OTPVerify = () => {
   };
 
   return (
-    <SafeAreaView style={styles.OTPContainer}>
-      <View style={styles.miniContainer1}>
-        <View style={styles.ImageContainer}>
-          {/* <Image
-            style={styles.SignUpHadnivaLogo}
-            source={require("./assets/hadniva-removebg-preview 1.png")}
-          /> */}
-        </View>
-        <View style={styles.TextContainer}>
-          <Text style={styles.Text1}>OTP Verification</Text>
+    <View style={styles.OTPVerifyMainContainer}>
+      <View style={styles.OTPVerifySubContainer1}>
+        <View style={styles.OTPVerifySubContainer1A}></View>
+        <View style={styles.OTPVerifySubContainer1B}>
+          <View style={styles.TextBox1}>
+            <Text style={styles.Text1}>OTP Verification</Text>
+          </View>
+          <View style={styles.TextBox2}>
+            <Text style={styles.Text2}>
+              Enter the Verification code that was sent to you.
+            </Text>
+          </View>
         </View>
       </View>
-      <View style={styles.miniContainer2}>
-        <View style={styles.TextContainer}>
-          <Text style={styles.Text2}>Enter the OTP sent to your email</Text>
-        </View>
-        <View style={styles.OTPBoxes}>
-          {[1, 2, 3, 4].map((index) => (
+      <View style={styles.OTPVerifySubContainer2}>
+        <View style={styles.OTPVerifySubContainer2A}>
+          {[1, 2, 3, 4, 5, 6].map((index) => (
             <TextInput
               key={index}
               keyboardType="numeric"
               style={styles.TextInput}
-              placeholder="X"
+              placeholder="x"
               maxLength={1}
               value={otp[index]}
               onChangeText={(text) => handleInputChange(text, index)}
@@ -73,120 +72,176 @@ const OTPVerify = () => {
           ))}
         </View>
       </View>
-      <View style={styles.miniContainer3}>
-        <View style={styles.Amin}></View>
-        <View style={styles.Bmin}>
-          <Text style={styles.Text2}>Didn't receive OTP code?</Text>
-          <TouchableOpacity onPress={handleResend}>
-            <Text style={styles.Text3}>Resend</Text>
-          </TouchableOpacity>
+      <View style={styles.OTPVerifySubContainer3}>
+        <View style={styles.OTPVerifySubContainer3A}>
+          <Text style={styles.Recommend}>Didn't Recieve OTP?</Text>
+          <Text style={styles.Resend}>Resend OTP</Text>
         </View>
-        <View style={styles.Cmin}>
-          <TouchableOpacity onPress={handleVerify}>
-            <View style={styles.Button}>
-              <Text style={styles.Text1}>Verify</Text>
+        <View style={styles.OTPVerifySubContainer3B}>
+          <TouchableOpacity>
+            <View style={styles.GetOPTButton}>
+              <Text style={styles.ButtonText}>VERIFY AND PROCEED</Text>
             </View>
           </TouchableOpacity>
         </View>
+        <View style={styles.OTPVerifySubContainer3C}></View>
       </View>
-    </SafeAreaView>
+    </View>
+
+    //     <View style={styles.OTPBoxes}>
+    //       {[1, 2, 3, 4].map((index) => (
+    //         <TextInput
+    //           key={index}
+    //           keyboardType="numeric"
+    //           style={styles.TextInput}
+    //           placeholder="X"
+    //           maxLength={1}
+    //           value={otp[index]}
+    //           onChangeText={(text) => handleInputChange(text, index)}
+    //           ref={inputRefs[index - 1]}
+    //           onKeyPress={({ nativeEvent }) => {
+    //             if (nativeEvent.key === "Backspace" && index > 1) {
+    //               inputRefs[index - 2].current.focus();
+    //             }
+    //           }}
+    //         />
+    //       ))}
+    //     </View>
+    //   </View>
   );
 };
 
 const styles = StyleSheet.create({
-  OTPContainer: {
-    flex: 1,
+  OTPVerifyMainContainer: {
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
-    //justifyContent: "space-evenly",
-    backgroundColor: "#EEF7F8",
-  },
-  miniContainer1: {
+    justifyContent: "space-between",
+    height: "100%",
     width: "100%",
-    alignItems: "center",
-    paddingVertical: 2,
+    backgroundColor: "white",
+    paddingTop: 40,
+    alignSelf: "center",
   },
-  ImageContainer: {
-    width: 300,
-    height: 60,
+  OTPVerifySubContainer1: {
+    width: 350,
+    height: 140,
+
+    flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+    padding: 2,
+  },
+  OTPVerifySubContainer1A: {
+    width: 346,
+    height: 30,
+  },
+  OTPVerifySubContainer1B: {
+    width: 346,
+    height: 100,
+
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 2,
+  },
+  TextBox1: {
+    width: 342,
+    height: 30,
+  },
+  TextBox2: {
+    width: 342,
+    height: 50,
   },
   Text1: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "700",
-    color: "black",
-    opacity: 0.6,
-  },
-  miniContainer2: {
-    width: "100%",
-    alignItems: "center",
-    paddingVertical: 2,
-  },
-  TextInput: {
-    height: 50,
-    width: 50,
-    borderWidth: 0.5,
-    borderColor: "black",
-    fontSize: 20,
-    fontWeight: "700",
-    color: "black",
-    opacity: 0.6,
-    textAlign: "center",
-    backgroundColor: "#AEDCE6",
   },
   Text2: {
-    fontSize: 15,
-    color: "black",
-    opacity: 0.6,
+    fontSize: 16,
+    opacity: 0.5,
+    fontWeight: "normal",
   },
-  OTPBoxes: {
-    width: 300,
+  OTPVerifySubContainer2: {
+    width: 350,
+    height: 240,
+
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 2,
+  },
+  OTPVerifySubContainer2A: {
+    alignItems: "center",
+    justifyContent: "space-evenly",
+
     flexDirection: "row",
+    width: 340,
+    height: 90,
+  },
+  TextInput: {
+    borderBottomWidth: 2,
+    borderColor: "grey",
+
+    height: 50,
+    width: 50,
+    paddingLeft: 20,
+    fontSize: 18,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  OTPVerifySubContainer3: {
+    width: 350,
+    height: 300,
+
+    flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
+    padding: 2,
   },
-  TextContainer: {
-    width: 300,
+  OTPVerifySubContainer3A: {
+    width: 346,
     height: 30,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  miniContainer3: {
-    width: "100%",
-    alignItems: "center",
-    paddingVertical: 2,
-  },
-  Amin: {
-    width: 300,
-    height: 140,
-  },
-  Bmin: {
-    width: 340,
-    height: 30,
+
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
   },
-  Text3: {
-    fontSize: 15,
-    fontWeight: "900",
-    opacity: 0.9,
+  Recommend: {
+    fontSize: 16,
+    opacity: 0.6,
+  },
+  Resend: {
+    fontSize: 16,
+    color: "#3EAEC7",
     marginLeft: 10,
-    color: "#AEDCE6",
+    fontWeight: "700",
   },
-  Cmin: {
-    width: 300,
+  OTPVerifySubContainer3B: {
+    width: 346,
+    height: 60,
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  GetOPTButton: {
+    borderWidth: 0.5,
+    borderColor: "grey",
     height: 50,
+    width: 340,
+    backgroundColor: "#83CBDB",
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 5,
   },
-  Button: {
-    width: 90,
-    height: 40,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#AEDCE6",
+  ButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "white",
+  },
+  OTPVerifySubContainer3C: {
+    width: 346,
+    height: 160,
   },
 });
 
