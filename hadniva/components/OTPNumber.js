@@ -33,7 +33,7 @@ const OTPNumber = () => {
         </View>
         <View style={styles.OTPNumberSubContainer3B}>
           <TouchableOpacity>
-            <View style={styles.GetOPTButton}>
+            <View style={styles.OTPNumberButton}>
               <Text style={styles.ButtonText}>GET OTP</Text>
             </View>
           </TouchableOpacity>
@@ -108,10 +108,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderColor: "grey",
     height: 50,
-    width: 340,
+    width: 280,
     paddingLeft: 20,
     fontSize: 18,
-    borderRadius: 5,
+
     textAlign: "center",
   },
   OTPNumberSubContainer3: {
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  GetOPTButton: {
+  OTPNumberButton: {
     borderWidth: 0.5,
     borderColor: "grey",
     height: 50,
-    width: 340,
-    backgroundColor: "#83CBDB",
+    width: 280,
+    backgroundColor: "#ADE7EE",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     fontSize: 20,
     fontWeight: "700",
-    color: "white",
+    opacity: 0.8,
   },
   OTPNumberSubContainer3C: {
     width: 346,

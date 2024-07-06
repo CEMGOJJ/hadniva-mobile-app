@@ -7,45 +7,44 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const OTPEmail = () => {
+const PasswordRecoveryEmail = () => {
   return (
-    <View style={styles.OTPEmailMainContainer}>
-      <View style={styles.OTPEmailSubContainer1}>
-        <View style={styles.OTPEmailSubContainer1A}></View>
-        <View style={styles.OTPEmailSubContainer1B}>
+    <View style={styles.PasswordRecoveryEmailMainContainer}>
+      <View style={styles.PasswordRecoveryEmailSubContainer1}>
+        <View style={styles.PasswordRecoveryEmailSubContainer1A}></View>
+        <View style={styles.PasswordRecoveryEmailSubContainer1B}>
           <View style={styles.TextBox1}>
-            <Text style={styles.Text1}>OTP Verification</Text>
+            <Text style={styles.Text1}>Forgotten Password?</Text>
           </View>
           <View style={styles.TextBox2}>
             <Text style={styles.Text2}>
-              We'll send a one time password to this email.
+              Please enter your email address to receive a password reset link.
             </Text>
-            <Text style={styles.Text2}>Enter your email.</Text>
           </View>
         </View>
       </View>
-      <View style={styles.OTPEmailSubContainer2}>
+      <View style={styles.PasswordRecoveryEmailSubContainer2}>
         <TextInput style={styles.TextInput}></TextInput>
       </View>
-      <View style={styles.OTPEmailSubContainer3}>
-        <View style={styles.OTPEmailSubContainer3A}>
+      <View style={styles.PasswordRecoveryEmailSubContainer3}>
+        <View style={styles.PasswordRecoveryEmailSubContainer3A}>
           <Text style={styles.Recommend}>Use your number instead?</Text>
         </View>
-        <View style={styles.OTPEmailSubContainer3B}>
+        <View style={styles.PasswordRecoveryEmailSubContainer3B}>
           <TouchableOpacity>
-            <View style={styles.GetOPTButton}>
-              <Text style={styles.ButtonText}>GET OTP</Text>
+            <View style={styles.PasswordRecoveryEmailButton}>
+              <Text style={styles.ButtonText}>SEND</Text>
             </View>
           </TouchableOpacity>
         </View>
-        <View style={styles.OTPEmailSubContainer3C}></View>
+        <View style={styles.PasswordRecoveryEmailSubContainer3C}></View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  OTPEmailMainContainer: {
+  PasswordRecoveryEmailMainContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     alignSelf: "center",
   },
-  OTPEmailSubContainer1: {
+  PasswordRecoveryEmailSubContainer1: {
     width: 350,
     height: 140,
 
@@ -65,11 +64,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 2,
   },
-  OTPEmailSubContainer1A: {
+  PasswordRecoveryEmailSubContainer1A: {
     width: 346,
     height: 30,
   },
-  OTPEmailSubContainer1B: {
+  PasswordRecoveryEmailSubContainer1B: {
     width: 346,
     height: 100,
 
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     fontWeight: "normal",
   },
-  OTPEmailSubContainer2: {
+  PasswordRecoveryEmailSubContainer2: {
     width: 350,
     height: 240,
 
@@ -111,10 +110,10 @@ const styles = StyleSheet.create({
     width: 280,
     paddingLeft: 20,
     fontSize: 18,
-
+    overflow: "hidden",
     textAlign: "center",
   },
-  OTPEmailSubContainer3: {
+  PasswordRecoveryEmailSubContainer3: {
     width: 350,
     height: 300,
 
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 2,
   },
-  OTPEmailSubContainer3A: {
+  PasswordRecoveryEmailSubContainer3A: {
     width: 346,
     height: 30,
 
@@ -134,14 +133,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     opacity: 0.3,
   },
-  OTPEmailSubContainer3B: {
+  PasswordRecoveryEmailSubContainer3B: {
     width: 346,
     height: 60,
 
     alignItems: "center",
     justifyContent: "center",
   },
-  GetOPTButton: {
+  PasswordRecoveryEmailButton: {
     borderWidth: 0.5,
     borderColor: "grey",
     height: 50,
@@ -156,10 +155,10 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     opacity: 0.8,
   },
-  OTPEmailSubContainer3C: {
+  PasswordRecoveryEmailSubContainer3C: {
     width: 346,
     height: 160,
   },
 });
 
-export default OTPEmail;
+export default PasswordRecoveryEmail;

@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     height: 50,
     width: 340,
-    backgroundColor: "#83CBDB",
+    backgroundColor: "##ADE7EE",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     fontSize: 20,
     fontWeight: "700",
-    color: "white",
+    opacity: 0.8,
   },
   LoginSubContainer2C: {
     width: 346,

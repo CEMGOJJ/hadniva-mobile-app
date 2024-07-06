@@ -58,7 +58,6 @@ const OTPVerify = () => {
               key={index}
               keyboardType="numeric"
               style={styles.TextInput}
-              placeholder="x"
               maxLength={1}
               value={otp[index]}
               onChangeText={(text) => handleInputChange(text, index)}
@@ -79,7 +78,7 @@ const OTPVerify = () => {
         </View>
         <View style={styles.OTPVerifySubContainer3B}>
           <TouchableOpacity>
-            <View style={styles.GetOPTButton}>
+            <View style={styles.OTPVerifyButton}>
               <Text style={styles.ButtonText}>VERIFY AND PROCEED</Text>
             </View>
           </TouchableOpacity>
@@ -224,12 +223,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  GetOPTButton: {
+  OTPVerifyButton: {
     borderWidth: 0.5,
     borderColor: "grey",
     height: 50,
-    width: 340,
-    backgroundColor: "#83CBDB",
+    width: 280,
+    backgroundColor: "#ADE7EE",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
@@ -237,7 +236,7 @@ const styles = StyleSheet.create({
   ButtonText: {
     fontSize: 20,
     fontWeight: "700",
-    color: "white",
+    opacity: 0.8,
   },
   OTPVerifySubContainer3C: {
     width: 346,
