@@ -33,7 +33,7 @@ const OTPEmail = () => {
         </View>
         <View style={styles.OTPEmailSubContainer3B}>
           <TouchableOpacity>
-            <View style={styles.GetOPTButton}>
+            <View style={styles.OTPEmailButton}>
               <Text style={styles.ButtonText}>GET OTP</Text>
             </View>
           </TouchableOpacity>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  GetOPTButton: {
+  OTPEmailButton: {
     borderWidth: 0.5,
     borderColor: "grey",
     height: 50,

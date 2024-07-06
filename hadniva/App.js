@@ -8,6 +8,7 @@ import OTPNumber from "./components/OTPNumber";
 import OTPEmail from "./components/OTPEmail";
 import PasswordRecoveryEmail from "./components/PasswordRecoveryEmail";
 import SetNewPassword from "./components/SetNewPassword";
+import SetProfilePicture from "./components/SetProfilePicture";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
         {/* <OTPNumber /> */}
         {/* <OTPEmail /> */}
         {/* <PasswordRecoveryEmail /> */}
-        <SetNewPassword />
+        {/* <SetNewPassword /> */}
+        <SetProfilePicture />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
