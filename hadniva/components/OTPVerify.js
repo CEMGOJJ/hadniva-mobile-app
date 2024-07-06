@@ -7,11 +7,11 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
-  Alert
+  Alert,
 } from "react-native";
 
-const OTP = () => {
-  const [otp, setOtp] = useState({ 1: '', 2: '', 3: '', 4: '' });
+const OTPVerify = () => {
+  const [otp, setOtp] = useState({ 1: "", 2: "", 3: "", 4: "" });
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
   const handleInputChange = (text, index) => {
@@ -24,27 +24,26 @@ const OTP = () => {
   };
 
   const handleVerify = () => {
-    const fullOtp = Object.values(otp).join('');
+    const fullOtp = Object.values(otp).join("");
     if (fullOtp.length === 4) {
-      Alert.alert('OTP Verified', `Your OTP code is ${fullOtp}`);
-      
+      Alert.alert("OTP Verified", `Your OTP code is ${fullOtp}`);
     } else {
-      Alert.alert('Error', 'Please enter the complete OTP');
+      Alert.alert("Error", "Please enter the complete OTP");
     }
   };
 
   const handleResend = () => {
-    Alert.alert('OTP Resent', 'A new OTP has been sent to your email');
+    Alert.alert("OTP Resent", "A new OTP has been sent to your email");
   };
 
   return (
     <SafeAreaView style={styles.OTPContainer}>
       <View style={styles.miniContainer1}>
         <View style={styles.ImageContainer}>
-          <Image
+          {/* <Image
             style={styles.SignUpHadnivaLogo}
             source={require("./assets/hadniva-removebg-preview 1.png")}
-          />
+          /> */}
         </View>
         <View style={styles.TextContainer}>
           <Text style={styles.Text1}>OTP Verification</Text>
@@ -66,7 +65,7 @@ const OTP = () => {
               onChangeText={(text) => handleInputChange(text, index)}
               ref={inputRefs[index - 1]}
               onKeyPress={({ nativeEvent }) => {
-                if (nativeEvent.key === 'Backspace' && index > 1) {
+                if (nativeEvent.key === "Backspace" && index > 1) {
                   inputRefs[index - 2].current.focus();
                 }
               }}
@@ -191,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OTP;
+export default OTPVerify;

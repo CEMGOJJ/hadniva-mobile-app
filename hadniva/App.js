@@ -3,6 +3,8 @@ import { StyleSheet, View, SafeAreaView } from "react-native";
 import SplashScreen1 from "./components/SplashScreen1";
 import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
+import OTPVerify from "./components/OTPVerify";
+import OTPNumber from "./components/OTPNumber";
 
 export default function App() {
   return (
@@ -10,7 +12,9 @@ export default function App() {
       <View style={styles.container}>
         {/* <SplashScreen1 /> */}
         {/* <LogIn /> */}
-        <SignUp />
+        {/* <SignUp /> */}
+        {/* <OTPVerify /> */}
+        <OTPNumber />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

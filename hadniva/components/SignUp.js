@@ -203,7 +203,6 @@ const styles = StyleSheet.create({
   SignSubContainer3A: {
     width: 346,
     height: 35,
-
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
