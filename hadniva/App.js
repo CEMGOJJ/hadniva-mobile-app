@@ -15,15 +15,16 @@ export default function App() {
     <SafeAreaView>
       <View style={styles.container}>
         {/* <SplashScreen1 /> */}
-        {/* <LogIn /> */}
         {/* <SignUp /> */}
         {/* <OTPVerify /> */}
         {/* <OTPNumber /> */}
         {/* <OTPEmail /> */}
         {/* <PasswordRecoveryEmail /> */}
         {/* <SetNewPassword /> */}
-        <SetProfilePicture />
-        <StatusBar style="auto" />
+      {/*  <SetProfilePicture />*/}
+      <LogIn /> 
+
+       <StatusBar style="auto" />
       </View>
     </SafeAreaView>
   );
