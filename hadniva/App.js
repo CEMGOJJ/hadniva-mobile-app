@@ -10,6 +10,7 @@ import PasswordRecoveryEmail from "./components/PasswordRecoveryEmail";
 import SetNewPassword from "./components/SetNewPassword";
 import SetProfilePicture from "./components/SetProfilePicture";
 import SplashScreen2 from "./components/SplashScreen2";
+import Home from "./components/Home";
 
 export default function App() {
   return (
@@ -23,7 +24,9 @@ export default function App() {
         {/* <PasswordRecoveryEmail /> */}
         {/* <SetNewPassword /> */}
         {/* <SetProfilePicture /> */}
-        <SplashScreen2 />
+        {/* <SplashScreen2 /> */}
+        <Home />
+        {/* <LogIn /> */}
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

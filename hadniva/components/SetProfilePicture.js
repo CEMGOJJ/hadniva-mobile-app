@@ -23,19 +23,14 @@ const SetProfilePicture = () => {
       <View style={styles.SetProfilePictureSubContainer2}>
         <View style={styles.AB}>
           <View style={styles.SetProfilePictureSubContainer2A}>
-            <ImageBackground
-              source={require("../assets/picture1.png")}
-              style={styles.Background}
-            >
-              <TouchableOpacity>
-                <View style={styles.SetProfilePictureSubContainer2B}>
-                  <Image
-                    style={styles.cameraIcon}
-                    source={require("../assets/camera.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </ImageBackground>
+            <TouchableOpacity>
+              <View style={styles.SetProfilePictureSubContainer2B}>
+                <Image
+                  style={styles.cameraIcon}
+                  source={require("../assets/camera.png")}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -137,6 +132,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "grey",
   },
   SetProfilePictureSubContainer2B: {
     width: 50,
@@ -150,7 +146,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  Background: {},
+
   cameraIcon: {
     width: 30,
     height: 30,
@@ -172,8 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   Recommend: {
-    fontSize: 16,
-    opacity: 0.7,
+    fontSize: 15,
   },
   SetProfilePictureSubContainer3B: {
     width: 346,

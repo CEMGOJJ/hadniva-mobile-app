@@ -27,9 +27,7 @@ const PasswordRecoveryEmail = () => {
         <TextInput style={styles.TextInput}></TextInput>
       </View>
       <View style={styles.PasswordRecoveryEmailSubContainer3}>
-        <View style={styles.PasswordRecoveryEmailSubContainer3A}>
-          <Text style={styles.Recommend}>Use your number instead?</Text>
-        </View>
+        <View style={styles.PasswordRecoveryEmailSubContainer3A}></View>
         <View style={styles.PasswordRecoveryEmailSubContainer3B}>
           <TouchableOpacity>
             <View style={styles.PasswordRecoveryEmailButton}>
