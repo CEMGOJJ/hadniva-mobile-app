@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const LogIn = () => {
   return (
@@ -82,11 +83,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     height: "100%",
     width: "100%",
     backgroundColor: "white",
-    paddingTop: 40,
+
     alignSelf: "center",
   },
 

@@ -122,8 +122,8 @@ const Home = () => {
           <Text style={styles.Text3}>Our Services</Text>
         </View>
         <View style={styles.HomeMainSubContainer3B}>
-          <ScrollView style={styles.scroll}>
-            <View style={styles.HomeMainSubContainer3BB}>
+          <View style={styles.HomeMainSubContainer3BB}>
+            <TouchableOpacity>
               <View style={styles.Container3BMini1}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -150,6 +150,8 @@ const Home = () => {
                   </View>
                 </View>
               </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
               <View style={styles.Container3BMini2}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -178,6 +180,8 @@ const Home = () => {
                   </View>
                 </View>
               </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
               <View style={styles.Container3BMini3}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -206,8 +210,8 @@ const Home = () => {
                   </View>
                 </View>
               </View>
-            </View>
-          </ScrollView>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -223,13 +227,13 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     backgroundColor: "white",
-    paddingTop: 40,
+
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   HomeMainSubContainer1: {
     width: 350,
-    height: 72,
+    height: 55,
 
     padding: 2,
     alignItems: "center",
@@ -239,7 +243,7 @@ const styles = StyleSheet.create({
 
   HomeMainSubContainer1B: {
     width: 346,
-    height: 70,
+    height: 45,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
@@ -254,7 +258,7 @@ const styles = StyleSheet.create({
   },
   MiniSubContainer1B2: {
     width: 342,
-    height: 30,
+    height: 25,
 
     justifyContent: "center",
     padding: 2,
@@ -277,11 +281,11 @@ const styles = StyleSheet.create({
 
   HomeMainSubContainer2: {
     width: 350,
-    height: 280,
+    height: 270,
 
     padding: 2,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     flexDirection: "column",
   },
   HomeMainSubContainer2A: {
@@ -296,8 +300,8 @@ const styles = StyleSheet.create({
   TextInput: {
     width: 336,
     height: 50,
-    borderWidth: 1,
-    borderColor: "grey",
+    borderWidth: 2,
+    borderColor: "#83CBDB",
     padding: 2,
     borderRadius: 10,
     paddingLeft: 45,
@@ -310,11 +314,11 @@ const styles = StyleSheet.create({
     right: 145,
   },
   HomeMainSubContainer2B: {
-    borderWidth: 3,
-    borderColor: "black",
+    borderWidth: 2,
+    borderColor: "white",
     width: 342,
-    height: 210,
-    borderWidth: 1,
+    height: 200,
+
     justifyContent: "center",
     padding: 2,
     borderRadius: 10,
@@ -326,9 +330,8 @@ const styles = StyleSheet.create({
   },
   slideImage: {
     width: 340,
-    height: "100%",
+    height: 200,
     resizeMode: "cover",
-    borderRadius: 10,
   },
   indicatorContainer: {
     flexDirection: "row",
@@ -347,7 +350,7 @@ const styles = StyleSheet.create({
   },
   HomeMainSubContainer3: {
     width: 350,
-    height: 340,
+    height: 280,
 
     alignItems: "center",
     flexDirection: "column",
@@ -364,29 +367,28 @@ const styles = StyleSheet.create({
   },
   HomeMainSubContainer3B: {
     width: 340,
-    height: 290,
+    height: 230,
 
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
     padding: 2,
   },
-  scroll: {
-    width: 340,
-  },
+
   HomeMainSubContainer3BB: {
     width: "100%",
-    height: "100%",
+    height: 230,
 
+    borderColor: "blue",
     alignItems: "center",
     paddingTop: 10,
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   Container3BMini1: {
     width: 330,
-    height: 100,
+    height: 70,
     borderWidth: 2,
-    backgroundColor: "#FA8072",
+    borderColor: "#83CBDB",
     marginBottom: 10,
     borderRadius: 10,
     flexDirection: "row",
@@ -395,9 +397,10 @@ const styles = StyleSheet.create({
   },
   Container3BMini2: {
     width: 330,
-    height: 100,
+    height: 70,
     borderWidth: 2,
-    backgroundColor: "#DA70D6",
+    borderColor: "#83CBDB",
+
     marginBottom: 10,
     borderRadius: 10,
     flexDirection: "row",
@@ -406,9 +409,9 @@ const styles = StyleSheet.create({
   },
   Container3BMini3: {
     width: 330,
-    height: 100,
+    height: 70,
     borderWidth: 2,
-    backgroundColor: "#F2D2BD",
+    borderColor: "#83CBDB",
     marginBottom: 10,
     borderRadius: 10,
     flexDirection: "row",
@@ -417,7 +420,7 @@ const styles = StyleSheet.create({
   },
   One: {
     width: 50,
-    height: 80,
+    height: 60,
 
     alignItems: "center",
     justifyContent: "center",
@@ -435,7 +438,7 @@ const styles = StyleSheet.create({
   },
   Two: {
     width: 200,
-    height: 80,
+    height: 60,
 
     alignItems: "center",
     justifyContent: "center",
@@ -449,7 +452,7 @@ const styles = StyleSheet.create({
   },
   Three: {
     width: 50,
-    height: 80,
+    height: 50,
 
     alignItems: "center",
     justifyContent: "center",
