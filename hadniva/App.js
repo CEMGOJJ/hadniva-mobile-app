@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 //Importing screen components
 import SplashScreen1 from "./components/SplashScreen1";
@@ -26,6 +27,12 @@ import SocialMediaMarketing from "./components/SocialMediaMarketing";
 import RemoteDesktopSolutions from "./components/RemoteDesktopSolutions";
 import Settings from "./components/Settings";
 import Payment from "./components/Payment";
+import Profile from "./components/Profile";
+import Notifications from "./components/Notifications";
+import Analytics from "./components/Analytics";
+import Resources from "./components/Resources";
+import Contact from "./components/Contact";
+
 //Creating the navigation containers
 
 const Tab = createBottomTabNavigator();
@@ -46,6 +53,7 @@ function HomeStack() {
 function TabNavigator() {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
@@ -85,10 +93,64 @@ export default function App() {
         screenOptions={{
           headerTitle: "",
           headerStyle: {},
+          drawerActiveTintColor: "#83CBDB",
+          drawerInactiveTintColor: "gray",
         }}
       >
-        <Drawer.Screen name="Main" component={TabNavigator} />
-        <Drawer.Screen name="About" component={SplashScreen2} />
+        <Drawer.Screen
+          name="Main"
+          component={TabNavigator}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="explore" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="person" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Notifications"
+          component={Notifications}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="notifications-active" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Analytics"
+          component={Analytics}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="trending-up" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Resources"
+          component={Resources}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="folder" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Contact Us"
+          component={Contact}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Icon name="message" color={color} size={size} />
+            ),
+          }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );

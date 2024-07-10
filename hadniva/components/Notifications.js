@@ -1,15 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-const Payment = () => {
+const Notifications = () => {
   return (
     <View>
-      <Text>This is payment Screen</Text>
+      <Text>This is Notifications Screen</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default Payment;
+export default Notifications;
