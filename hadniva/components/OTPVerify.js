@@ -10,7 +10,7 @@ import {
   Alert,
 } from "react-native";
 
-const OTPVerify = () => {
+const OTPVerify = (route, navigation) => {
   const [otp, setOtp] = useState({ 1: "", 2: "", 3: "", 4: "" });
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 

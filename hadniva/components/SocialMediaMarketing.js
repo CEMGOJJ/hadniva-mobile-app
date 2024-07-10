@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 const SocialMediaMarketing = () => {
   return (
-    <View style={styles.SocialMediaMarketingContainer}>
+    <View style={styles.SocialMediaMarketingMainContainer}>
       <View style={styles.SocialMediaMarketingSubContainer1}>
         <View style={styles.SocialMediaMarketingSubContainer1A}>
           <Text style={styles.Title}>Social Media Marketing</Text>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     backgroundColor: "white",
-    paddingTop: 40,
+
     alignSelf: "center",
   },
   SocialMediaMarketingSubContainer1: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   SocialMediaMarketingSubContainer2: {
     width: 350,
-    height: 450,
+    height: 400,
     padding: 2,
 
     flexDirection: "column",
@@ -104,14 +104,14 @@ const styles = StyleSheet.create({
     width: 342,
     height: 70,
     padding: 2,
-    borderWidth: 3,
+    borderWidth: 1,
     borderColor: "#83cbdb",
     borderRadius: 10,
     justifyContent: "center",
   },
   SocialMediaMarketingSubContainer3: {
     width: 350,
-    height: 120,
+    height: 100,
     padding: 2,
 
     alignItems: "center",

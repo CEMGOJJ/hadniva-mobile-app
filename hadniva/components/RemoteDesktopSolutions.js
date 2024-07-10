@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
-const RemoteDesktopSolutions = () => {
+const RemoteDesktopSolutions = (route, navigation) => {
   return (
     <View style={styles.RemoteDesktopSolutionsMainContainer}>
       <View style={styles.RemoteDesktopSolutionsSubContainer1}>
@@ -52,8 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     height: "100%",
     width: "100%",
-    backgroundColor: "white",
-    paddingTop: 40,
+
     alignSelf: "center",
   },
   RemoteDesktopSolutionsSubContainer1: {
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
   },
   RemoteDesktopSolutionsSubContainer2: {
     width: 350,
-    height: 450,
+    height: 400,
     padding: 2,
 
     flexDirection: "column",
@@ -102,14 +101,14 @@ const styles = StyleSheet.create({
     width: 342,
     height: 70,
     padding: 2,
-    borderWidth: 3,
+    borderWidth: 1,
     borderColor: "#83cbdb",
     borderRadius: 10,
     justifyContent: "center",
   },
   RemoteDesktopSolutionsSubContainer3: {
     width: 350,
-    height: 120,
+    height: 100,
     padding: 2,
 
     alignItems: "center",

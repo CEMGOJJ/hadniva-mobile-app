@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import OTPVerify from "./OTPVerify";
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
@@ -80,6 +82,7 @@ const Slideshow = ({ images }) => {
 };
 
 const Home = () => {
+  const navigation = useNavigation();
   const images = [
     require("../assets/picture1.png"),
     require("../assets/picture1.png"),
@@ -123,7 +126,7 @@ const Home = () => {
         </View>
         <View style={styles.HomeMainSubContainer3B}>
           <View style={styles.HomeMainSubContainer3BB}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Web")}>
               <View style={styles.Container3BMini1}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -140,7 +143,9 @@ const Home = () => {
                 </View>
                 <View style={styles.Three}>
                   <View style={styles.ThreeBox}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Web")}
+                    >
                       <Entypo
                         name="chevron-small-right"
                         size={24}
@@ -151,7 +156,7 @@ const Home = () => {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Social")}>
               <View style={styles.Container3BMini2}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -170,7 +175,9 @@ const Home = () => {
                 </View>
                 <View style={styles.Three}>
                   <View style={styles.ThreeBox}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Social")}
+                    >
                       <Entypo
                         name="chevron-small-right"
                         size={24}
@@ -181,7 +188,7 @@ const Home = () => {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Remote")}>
               <View style={styles.Container3BMini3}>
                 <View style={styles.One}>
                   <View style={styles.OneBox}>
@@ -200,7 +207,9 @@ const Home = () => {
                 </View>
                 <View style={styles.Three}>
                   <View style={styles.ThreeBox}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Remote")}
+                    >
                       <Entypo
                         name="chevron-small-right"
                         size={24}

@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     backgroundColor: "white",
-    paddingTop: 40,
+
     alignSelf: "center",
   },
   WebDevelopmentSubContainer1: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   WebDevelopmentSubContainer2: {
     width: 350,
-    height: 450,
+    height: 400,
     padding: 2,
 
     flexDirection: "column",
@@ -106,14 +106,14 @@ const styles = StyleSheet.create({
     width: 342,
     height: 70,
     padding: 2,
-    borderWidth: 3,
+    borderWidth: 1,
     borderColor: "#83cbdb",
     borderRadius: 10,
     justifyContent: "center",
   },
   WebDevelopmentSubContainer3: {
     width: 350,
-    height: 120,
+    height: 100,
     padding: 2,
 
     alignItems: "center",

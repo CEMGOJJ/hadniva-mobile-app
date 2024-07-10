@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //Importing screen components
 import SplashScreen1 from "./components/SplashScreen1";
@@ -23,11 +24,24 @@ import Home from "./components/Home";
 import WebDevelopment from "./components/WebDevelopment";
 import SocialMediaMarketing from "./components/SocialMediaMarketing";
 import RemoteDesktopSolutions from "./components/RemoteDesktopSolutions";
-
+import Settings from "./components/Settings";
+import Payment from "./components/Payment";
 //Creating the navigation containers
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+
+function HomeStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="EntireHomeScreen" component={Home} />
+      <Stack.Screen name="Remote" component={RemoteDesktopSolutions} />
+      <Stack.Screen name="Web" component={WebDevelopment} />
+      <Stack.Screen name="Social" component={SocialMediaMarketing} />
+    </Stack.Navigator>
+  );
+}
 
 function TabNavigator() {
   return (
@@ -57,9 +71,9 @@ function TabNavigator() {
         },
       })}
     >
-      <Tab.Screen name="Payment" component={SignUp} />
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Settings" component={SignUp} />
+      <Tab.Screen name="Payment" component={Payment} />
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 }
@@ -68,11 +82,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        screenOptions={
-          {
-            // This hides the header for the drawer navigation
-          }
-        }
+        screenOptions={{
+          headerTitle: "",
+          headerStyle: {},
+        }}
       >
         <Drawer.Screen name="Main" component={TabNavigator} />
         <Drawer.Screen name="About" component={SplashScreen2} />
