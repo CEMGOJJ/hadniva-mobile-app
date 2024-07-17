@@ -8,11 +8,8 @@ import {
   TextInput,
   Dimensions,
   Animated,
-  ScrollView,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import OTPVerify from "./OTPVerify";
+import { Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
@@ -409,7 +406,6 @@ const styles = StyleSheet.create({
     height: 70,
     borderWidth: 2,
     borderColor: "#83CBDB",
-
     marginBottom: 10,
     borderRadius: 10,
     flexDirection: "row",

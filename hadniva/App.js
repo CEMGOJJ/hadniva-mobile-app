@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, SafeAreaView } from "react-native";
+
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -32,20 +32,35 @@ import Notifications from "./components/Notifications";
 import Analytics from "./components/Analytics";
 import Resources from "./components/Resources";
 import Contact from "./components/Contact";
+import Account from "./components/Account";
+import ChatSupport from "./components/ChatSupport";
+import LogOut from "./components/LogOut";
+import BugReport from "./components/BugReport";
+import SendFeedback from "./components/SendFeedback";
 
 //Creating the navigation containers
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
 
 function HomeStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={({ navigation }) => ({
+        headerShown: false,
+      })}
+    >
       <Stack.Screen name="EntireHomeScreen" component={Home} />
       <Stack.Screen name="Remote" component={RemoteDesktopSolutions} />
       <Stack.Screen name="Web" component={WebDevelopment} />
       <Stack.Screen name="Social" component={SocialMediaMarketing} />
+      <Stack.Screen name="Account" component={Account} />
+      <Stack.Screen name="ChatSupport" component={ChatSupport} />
+      <Stack.Screen name="LogOut" component={LogOut} />
+      <Stack.Screen name="BugReport" component={BugReport} />
+      <Stack.Screen name="SendFeedback" component={SendFeedback} />
     </Stack.Navigator>
   );
 }

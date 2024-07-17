@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   SocialMediaMarketingSubContainer2: {
     width: 350,
-    height: 400,
+    height: 380,
     padding: 2,
 
     flexDirection: "column",
@@ -102,10 +102,9 @@ const styles = StyleSheet.create({
   },
   ListOfServices: {
     width: 342,
-    height: 70,
+    height: 50,
     padding: 2,
-    borderWidth: 1,
-    borderColor: "#83cbdb",
+
     borderRadius: 10,
     justifyContent: "center",
   },
