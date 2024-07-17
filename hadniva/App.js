@@ -22,21 +22,21 @@ import SetProfilePicture from "./components/SetProfilePicture";
 import SplashScreen2 from "./components/SplashScreen2";
 import Home from "./components/Home";
 
-import WebDevelopment from "./components/WebDevelopment";
-import SocialMediaMarketing from "./components/SocialMediaMarketing";
-import RemoteDesktopSolutions from "./components/RemoteDesktopSolutions";
-import Settings from "./components/Settings";
-import Payment from "./components/Payment";
-import Profile from "./components/Profile";
-import Notifications from "./components/Notifications";
-import Analytics from "./components/Analytics";
-import Resources from "./components/Resources";
-import Contact from "./components/Contact";
-import Account from "./components/Account";
-import ChatSupport from "./components/ChatSupport";
-import LogOut from "./components/LogOut";
-import BugReport from "./components/BugReport";
-import SendFeedback from "./components/SendFeedback";
+import WebDevelopment from "./src/screens/WebDevelopment";
+import SocialMediaMarketing from "./src/screens/SocialMediaMarketing";
+import RemoteDesktopSolutions from "./src/screens/RemoteDesktopSolutions";
+import Settings from "./src/screens/Settings";
+import Payment from "./src/screens/Payment";
+import Profile from "./src/screens/Profile";
+import Notifications from "./src/screens/Notifications";
+import Analytics from "./src/screens/Analytics";
+import Resources from "./src/screens/Resources";
+import Contact from "./src/screens/Contact";
+import Account from "./src/screens/Account";
+import ChatSupport from "./src/screens/ChatSupport";
+import LogOut from "./src/screens/LogOut";
+import BugReport from "./src/screens/BugReport";
+import SendFeedback from "./src/screens/SendFeedback";
 
 //Creating the navigation containers
 

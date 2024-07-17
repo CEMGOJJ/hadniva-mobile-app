@@ -10,13 +10,13 @@ const Payment = () => {
         <View style={styles.debitCard}>
           <Text style={styles.paymentText}>Debit / Credit Card</Text>
           <TouchableOpacity>
-            <Image source={require("../assets/visa.png")} />
+            <Image source={require("../../assets/visa.png")} />
           </TouchableOpacity>
         </View>
         <View style={styles.mobileMoney}>
           <Text style={styles.paymentText}>Mobile Money</Text>
           <TouchableOpacity>
-            <Image source={require("../assets/visa.png")} />
+            <Image source={require("../../assets/visa.png")} />
           </TouchableOpacity>
         </View>
       </View>

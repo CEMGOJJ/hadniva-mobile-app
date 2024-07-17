@@ -81,12 +81,11 @@ const Slideshow = ({ images }) => {
 const Home = () => {
   const navigation = useNavigation();
   const images = [
-    require("../assets/picture1.png"),
-    require("../assets/picture1.png"),
-    require("../assets/picture1.png"),
-    require("../assets/picture1.png"),
-    require("../assets/picture1.png"),
-    require("../assets/picture1.png"),
+    require("../../assets/picture1.png"),
+    require("../../assets/picture1.png"),
+    require("../../assets/picture1.png"),
+    require("../../assets/picture1.png"),
+    require("../../assets/picture1.png"),
   ];
   return (
     <View style={styles.HomeMainContainer}>
