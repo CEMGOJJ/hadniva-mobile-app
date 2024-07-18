@@ -10,17 +10,17 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 //Importing screen components
-import SplashScreen1 from "./components/SplashScreen1";
-import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
-import OTPVerify from "./components/OTPVerify";
-import OTPNumber from "./components/OTPNumber";
-import OTPEmail from "./components/OTPEmail";
-import PasswordRecoveryEmail from "./components/PasswordRecoveryEmail";
-import SetNewPassword from "./components/SetNewPassword";
-import SetProfilePicture from "./components/SetProfilePicture";
-import SplashScreen2 from "./components/SplashScreen2";
-import Home from "./components/Home";
+// import SplashScreen1 from "./components/SplashScreen1";
+// import LogIn from "./components/LogIn";
+// import SignUp from "./components/SignUp";
+// import OTPVerify from "./components/OTPVerify";
+// import OTPNumber from "./components/OTPNumber";
+// import OTPEmail from "./components/OTPEmail";
+// import PasswordRecoveryEmail from "./components/PasswordRecoveryEmail";
+// import SetNewPassword from "./components/SetNewPassword";
+// import SetProfilePicture from "./components/SetProfilePicture";
+// import SplashScreen2 from "./components/SplashScreen2";
+import Home from "./src/screens/Home";
 
 import WebDevelopment from "./src/screens/WebDevelopment";
 import SocialMediaMarketing from "./src/screens/SocialMediaMarketing";
@@ -37,6 +37,9 @@ import ChatSupport from "./src/screens/ChatSupport";
 import LogOut from "./src/screens/LogOut";
 import BugReport from "./src/screens/BugReport";
 import SendFeedback from "./src/screens/SendFeedback";
+
+// Importing Contexts
+import { ThemeProvider } from "./src/context/ThemeContext";
 
 //Creating the navigation containers
 
@@ -101,7 +104,7 @@ function TabNavigator() {
   );
 }
 
-export default function App() {
+function AppContent() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -168,6 +171,14 @@ export default function App() {
         />
       </Drawer.Navigator>
     </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

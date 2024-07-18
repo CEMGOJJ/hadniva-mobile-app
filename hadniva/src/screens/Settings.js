@@ -1,32 +1,44 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Switch } from "react-native";
 import {
   Entypo,
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
 
 const Settings = () => {
   const navigation = useNavigation();
+  const { isDarkMode, toggleTheme } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
   return (
-    <View style={styles.SettingsMainContainer}>
+    <View
+      style={[
+        styles.SettingsMainContainer,
+        { backgroundColor: theme.background },
+      ]}
+    >
       <View style={styles.SettingsSubContainer1}>
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.SubContainer1A}>
             <View style={styles.One}>
               <View style={styles.OneBox}>
                 <MaterialCommunityIcons
-                  style={styles.Image}
+                  style={[styles.Image, { color: theme.text }]}
                   name="account-cog"
-                  size={30}
+                  size={28}
                   color="black"
                 />
               </View>
             </View>
             <View style={styles.Two}>
               <View style={styles.TwoBox}>
-                <Text style={styles.Name}>Account</Text>
+                <Text style={[styles.Name, { color: theme.text }]}>
+                  Account
+                </Text>
               </View>
             </View>
             <View style={styles.Three}>
@@ -34,7 +46,11 @@ const Settings = () => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("Account")}
                 >
-                  <Entypo name="chevron-small-right" size={24} color="black" />
+                  <Entypo
+                    name="chevron-small-right"
+                    size={24}
+                    style={{ color: theme.text }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -45,16 +61,18 @@ const Settings = () => {
             <View style={styles.One}>
               <View style={styles.OneBox}>
                 <MaterialIcons
-                  style={styles.Image}
+                  style={[styles.Image, { color: theme.text }]}
                   name="support-agent"
-                  size={30}
+                  size={28}
                   color="black"
                 />
               </View>
             </View>
             <View style={styles.Two}>
               <View style={styles.TwoBox}>
-                <Text style={styles.Name}>Chat Support</Text>
+                <Text style={[styles.Name, { color: theme.text }]}>
+                  Chat Support
+                </Text>
               </View>
             </View>
             <View style={styles.Three}>
@@ -62,7 +80,11 @@ const Settings = () => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("ChatSupport")}
                 >
-                  <Entypo name="chevron-small-right" size={24} color="black" />
+                  <Entypo
+                    name="chevron-small-right"
+                    size={24}
+                    style={{ color: theme.text }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -73,22 +95,26 @@ const Settings = () => {
             <View style={styles.One}>
               <View style={styles.OneBox}>
                 <MaterialIcons
-                  style={styles.Image}
+                  style={[styles.Image, { color: theme.text }]}
                   name="logout"
-                  size={30}
+                  size={28}
                   color="black"
                 />
               </View>
             </View>
             <View style={styles.Two}>
               <View style={styles.TwoBox}>
-                <Text style={styles.Name}>Logout</Text>
+                <Text style={[styles.Name, { color: theme.text }]}>Logout</Text>
               </View>
             </View>
             <View style={styles.Three}>
               <View style={styles.ThreeBox}>
                 <TouchableOpacity onPress={() => navigation.navigate("LogOut")}>
-                  <Entypo name="chevron-small-right" size={24} color="black" />
+                  <Entypo
+                    name="chevron-small-right"
+                    size={24}
+                    style={{ color: theme.text }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -99,16 +125,18 @@ const Settings = () => {
             <View style={styles.One}>
               <View style={styles.OneBox}>
                 <MaterialIcons
-                  style={styles.Image}
+                  style={[styles.Image, { color: theme.text }]}
                   name="bug-report"
-                  size={30}
+                  size={28}
                   color="black"
                 />
               </View>
             </View>
             <View style={styles.Two}>
               <View style={styles.TwoBox}>
-                <Text style={styles.Name}>Report a bug</Text>
+                <Text style={[styles.Name, { color: theme.text }]}>
+                  Report a bug
+                </Text>
               </View>
             </View>
             <View style={styles.Three}>
@@ -116,7 +144,11 @@ const Settings = () => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("BugReport")}
                 >
-                  <Entypo name="chevron-small-right" size={24} color="black" />
+                  <Entypo
+                    name="chevron-small-right"
+                    size={24}
+                    style={{ color: theme.text }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -127,16 +159,18 @@ const Settings = () => {
             <View style={styles.One}>
               <View style={styles.OneBox}>
                 <MaterialIcons
-                  style={styles.Image}
+                  style={[styles.Image, { color: theme.text }]}
                   name="feedback"
-                  size={30}
+                  size={28}
                   color="black"
                 />
               </View>
             </View>
             <View style={styles.Two}>
               <View style={styles.TwoBox}>
-                <Text style={styles.Name}>Send Feedback</Text>
+                <Text style={[styles.Name, { color: theme.text }]}>
+                  Send Feedback
+                </Text>
               </View>
             </View>
             <View style={styles.Three}>
@@ -144,7 +178,11 @@ const Settings = () => {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("SendFeedback")}
                 >
-                  <Entypo name="chevron-small-right" size={24} color="black" />
+                  <Entypo
+                    name="chevron-small-right"
+                    size={24}
+                    style={{ color: theme.text }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -152,7 +190,17 @@ const Settings = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.SettingsSubContainer2}>
-        <View style={styles.SubContainer2A}></View>
+        <View style={styles.SubContainer2A}>
+          <View style={styles.themeToggleContainer}>
+            <Text style={[styles.themeText, { color: theme.text }]}>Theme</Text>
+            <Switch
+              value={isDarkMode}
+              onValueChange={toggleTheme}
+              trackColor={{ false: "black", true: "white" }}
+              thumbColor={isDarkMode ? "#83CBDB" : "#83CBDB"}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -172,8 +220,7 @@ const styles = StyleSheet.create({
   SettingsSubContainer1: {
     width: 350,
     height: 450,
-    borderWidth: 1,
-    borderColor: "black",
+
     alignItems: "center",
     justifyContent: "space-evenly",
   },
@@ -196,11 +243,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   OneBox: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
 
     alignItems: "center",
     justifyContent: "center",
+    paddingLeft: 8,
+    paddingTop: 5,
   },
   Image: {
     width: 35,
@@ -240,12 +289,26 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  SettingsSubContainer2: {},
-  SubContainer2A: {
+  SettingsSubContainer2: {
     width: 350,
-    height: 100,
-    borderWidth: 1,
-    borderColor: "black",
+    height: 150,
+    display: "flex",
+    alignItems: "flex-end",
+  },
+  SubContainer2A: {
+    width: 150,
+    height: 50,
+  },
+
+  themeToggleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  themeText: {
+    fontSize: 16,
+    fontWeight: "500",
   },
 });
 

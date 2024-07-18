@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
 
 const { width } = Dimensions.get("window");
 
@@ -87,22 +89,41 @@ const Home = () => {
     require("../../assets/picture1.png"),
     require("../../assets/picture1.png"),
   ];
+
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const Black1 = require("../../assets/coding.png");
+  const White1 = require("../../assets/coding1.png");
+
+  const Black2 = require("../../assets/marketing.png");
+  const White2 = require("../../assets/marketing1.png");
+
+  const Black3 = require("../../assets/remoteDesktop.png");
+  const White3 = require("../../assets/remoteDesktop1.png");
+
   return (
-    <View style={styles.HomeMainContainer}>
+    <View
+      style={[styles.HomeMainContainer, { backgroundColor: theme.background }]}
+    >
       <View style={styles.HomeMainSubContainer1}>
         <View style={styles.HomeMainSubContainer1B}>
           <View style={styles.MiniSubContainer1B1}>
-            <Text style={styles.Text1}>Hi Jennifer {""}!</Text>
+            <Text style={[styles.Text1, { color: theme.text }]}>
+              Hi Jennifer {""}!
+            </Text>
           </View>
           <View style={styles.MiniSubContainer1B2}>
-            <Text style={styles.Text2}>Welcome back</Text>
+            <Text style={[styles.Text2, { color: theme.text }]}>
+              Welcome back
+            </Text>
           </View>
         </View>
       </View>
       <View style={styles.HomeMainSubContainer2}>
         <View style={styles.HomeMainSubContainer2A}>
           <TextInput
-            style={styles.TextInput}
+            style={[styles.TextInput, { color: theme.text }]}
             placeholder="Search for a service"
           />
           <Feather
@@ -112,13 +133,20 @@ const Home = () => {
             color="grey"
           />
         </View>
-        <View style={styles.HomeMainSubContainer2B}>
+        <View
+          style={[
+            styles.HomeMainSubContainer2B,
+            { borderColor: theme.borderColor },
+          ]}
+        >
           <Slideshow images={images} />
         </View>
       </View>
       <View style={styles.HomeMainSubContainer3}>
         <View style={styles.HomeMainSubContainer3A}>
-          <Text style={styles.Text3}>Our Services</Text>
+          <Text style={[styles.Text3, { color: theme.text }]}>
+            Our Services
+          </Text>
         </View>
         <View style={styles.HomeMainSubContainer3B}>
           <View style={styles.HomeMainSubContainer3BB}>
@@ -128,13 +156,15 @@ const Home = () => {
                   <View style={styles.OneBox}>
                     <Image
                       style={styles.Image}
-                      source={require("../assets/coding.png")}
+                      source={isDarkMode ? White1 : Black1}
                     />
                   </View>
                 </View>
                 <View style={styles.Two}>
                   <View style={styles.TwoBox}>
-                    <Text style={styles.ServiceName}>Website Development</Text>
+                    <Text style={[styles.ServiceName, { color: theme.text }]}>
+                      Website Development
+                    </Text>
                   </View>
                 </View>
                 <View style={styles.Three}>
@@ -145,7 +175,7 @@ const Home = () => {
                       <Entypo
                         name="chevron-small-right"
                         size={24}
-                        color="black"
+                        style={{ color: theme.text }}
                       />
                     </TouchableOpacity>
                   </View>
@@ -158,13 +188,13 @@ const Home = () => {
                   <View style={styles.OneBox}>
                     <Image
                       style={styles.Image}
-                      source={require("../assets/marketing.png")}
+                      source={isDarkMode ? White2 : Black2}
                     />
                   </View>
                 </View>
                 <View style={styles.Two}>
                   <View style={styles.TwoBox}>
-                    <Text style={styles.ServiceName}>
+                    <Text style={[(styles.ServiceName, { color: theme.text })]}>
                       Social Media Marketing
                     </Text>
                   </View>
@@ -177,7 +207,7 @@ const Home = () => {
                       <Entypo
                         name="chevron-small-right"
                         size={24}
-                        color="black"
+                        style={{ color: theme.text }}
                       />
                     </TouchableOpacity>
                   </View>
@@ -190,13 +220,13 @@ const Home = () => {
                   <View style={styles.OneBox}>
                     <Image
                       style={styles.Image}
-                      source={require("../assets/remoteDesktop.png")}
+                      source={isDarkMode ? White3 : Black3}
                     />
                   </View>
                 </View>
                 <View style={styles.Two}>
                   <View style={styles.TwoBox}>
-                    <Text style={styles.ServiceName}>
+                    <Text style={[styles.ServiceName, { color: theme.text }]}>
                       Remote Desktop Solutions
                     </Text>
                   </View>
@@ -209,7 +239,7 @@ const Home = () => {
                       <Entypo
                         name="chevron-small-right"
                         size={24}
-                        color="black"
+                        style={{ color: theme.text }}
                       />
                     </TouchableOpacity>
                   </View>
@@ -228,12 +258,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
     height: "100%",
     width: "100%",
     backgroundColor: "white",
-
-    alignItems: "center",
     justifyContent: "space-evenly",
   },
   HomeMainSubContainer1: {
@@ -319,14 +346,12 @@ const styles = StyleSheet.create({
     right: 145,
   },
   HomeMainSubContainer2B: {
-    borderWidth: 2,
-    borderColor: "white",
-    width: 342,
+    width: 334,
     height: 200,
-
+    borderWidth: 3,
     justifyContent: "center",
-    padding: 2,
-    borderRadius: 10,
+    // padding: 2,
+    // borderRadius: 10,
     alignItems: "center",
   },
   slideContainer: {
@@ -472,6 +497,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
     textAlign: "center",
+  },
+  darkBackground: {
+    backgroundColor: "black",
+  },
+  darkText: {
+    color: "white",
   },
 });
 

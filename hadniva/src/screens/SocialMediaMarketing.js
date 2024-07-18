@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
   Description: {
     fontSize: 16,
-    fontWeight: "500",
+    fontWeight: "400",
     textAlign: "left",
   },
   SocialMediaMarketingSubContainer1B: {
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   ButtonText: {
     fontSize: 16,
-    fontWeight: "700",
+    fontWeight: "600",
     color: "white",
   },
 });
