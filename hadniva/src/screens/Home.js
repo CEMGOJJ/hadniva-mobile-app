@@ -125,6 +125,7 @@ const Home = () => {
           <TextInput
             style={[styles.TextInput, { color: theme.text }]}
             placeholder="Search for a service"
+            placeholderTextColor={theme.placeholderTextColor}
           />
           <Feather
             style={styles.Magnifier}
@@ -339,6 +340,7 @@ const styles = StyleSheet.create({
     paddingLeft: 45,
     zIndex: -1,
     bottom: -12,
+    fontSize: 17,
   },
   Magnifier: {
     zIndex: 1,

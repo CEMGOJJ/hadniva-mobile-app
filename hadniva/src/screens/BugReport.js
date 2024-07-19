@@ -1,117 +1,228 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, SafeAreaView, Dimensions, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Dimensions,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
+import CustomTextInput from "../components/CustomTextInput";
 
-const { width: windowWidth } = Dimensions.get('window');
+const { width: windowWidth } = Dimensions.get("window");
 const baseWidth = 375;
 const scale = windowWidth / baseWidth;
-
+const screenHeight = Dimensions.get("window").height;
 const normalize = (size) => size * scale;
 
 const BugReport = () => {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
   return (
-    <SafeAreaView style={styles.BugReportMainContainer}>
-      <View style={styles.subjectContainer}>
-        <Text style={[styles.subjectText, { fontSize: 25 }]}>Bug Report</Text>
+    <View
+      style={[
+        styles.BugReportMainContainer,
+        { backgroundColor: theme.background },
+      ]}
+    >
+      <View style={styles.BugReportSubContainer1}>
+        <Text style={[styles.pageTitle, { color: theme.text }]}>
+          Bug Report
+        </Text>
       </View>
-      <View style={styles.subjectContainer}>
-      <Text style={styles.subjectText}>Subject</Text>
+      <View style={styles.BugReportSubContainer2}>
+        <View style={styles.BugReportSubContainer2A}>
+          <View style={styles.subjectContainer}>
+            <Text style={[styles.subjectText, { color: theme.text }]}>
+              Brief description of the issue
+            </Text>
+          </View>
+          <View style={styles.subjectTextInputContainer}>
+            <TextInput
+              placeholder="(e.g., 'App crashes on login')"
+              value={Text}
+              style={[styles.TextInput1, { color: theme.text }]}
+              placeholderTextColor={theme.placeholderTextColor}
+            />
+          </View>
+        </View>
+        <View style={styles.BugReportSubContainer2B}>
+          <View style={styles.contentContainer}>
+            <Text style={[styles.contentText, { color: theme.text }]}>
+              Please describe the bug in detail:
+            </Text>
+          </View>
+          <View style={styles.contentTextInputContainer}>
+            <CustomTextInput
+              placeholder={
+                "- What were you doing when the bug occurred?\n" +
+                "- What did you expect to happen?\n" +
+                "- What actually happened?\n" +
+                "- Steps to reproduce the bug\n" +
+                " - Device model and OS version\n" +
+                " - App version\n" +
+                "- Any error messages you saw"
+              }
+              multiline={true}
+              numberOfLines={14}
+              value={Text}
+              style={[styles.TextInput2, { color: theme.text }]}
+            />
+          </View>
+        </View>
       </View>
-      <View style={styles.textInputContainer}>
-      <TextInput
-        placeholder="Subject"
-        value={Text}
-        style={styles.BugReportTextInput}
-      />
+      <View style={styles.BugReportSubContainer3}>
+        <TouchableOpacity>
+          <View style={styles.sendbutton}>
+            <Text style={styles.sendText}>SEND</Text>
+          </View>
+        </TouchableOpacity>
       </View>
-
-      <View >
-        <Text style={styles.subjectText}>Content</Text>
-      </View>
-      <View style={styles.ContentContainer}>
-      <TextInput
-        placeholder=""
-        placeholderStyle={{marginTop: 100}}
-        value={Text}
-        style={styles.BugReportTextIContent}
-      />
-      </View>
-      <TouchableOpacity>
-      <View style={styles.sendbutton}>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.sendText}>Send</Text>
-      </View>
-      </View>
-      </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   BugReportMainContainer: {
-    justifyContent: "space-between",
-    height: '100%',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    height: "100%",
     width: "100%",
-    backgroundColor: "white",
+    alignSelf: "center",
+  },
+  BugReportSubContainer1: {
+    width: 350,
+    height: 50,
+    padding: 2,
+
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  pageTitle: {
+    fontSize: 25,
+    fontWeight: "400",
+    fontStyle: "italic",
+  },
+  BugReportSubContainer2: {
+    width: 350,
+    height: 490,
+    padding: 2,
+
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  BugReportSubContainer2A: {
+    width: 346,
+    height: 120,
+    padding: 2,
+
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "column",
   },
   subjectContainer: {
-    display: 'flex',
-    justifyContent: 'flex-start',
+    width: 342,
+    height: 40,
+    padding: 2,
+
+    justifyContent: "center",
   },
   subjectText: {
+    fontSize: 16,
+    fontWeight: "400",
+    marginLeft: 10,
+    fontStyle: "italic",
+  },
+  subjectTextInputContainer: {
+    width: 342,
+    height: 70,
+    padding: 2,
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  TextInput1: {
+    height: 60,
+    width: 336,
     fontSize: 17,
-    fontWeight: "bold",
-    paddingLeft: 20
-  },
-  BugReportTextInput: {
-    height: 50,
-    width: '90%',
-    borderWidth: 1,
-    marginBottom: 10,
-    borderColor: '#83CBDB',
+    borderColor: "#83CBDB",
     paddingLeft: 10,
-    letterSpacing: 2,
-    opacity: 0.5,
-    borderWidth: 3,
+    borderRadius: 10,
+    borderWidth: 2,
   },
-  textInputContainer: {
-    paddingTop: 20,
-    alignItems: 'center'
+  BugReportSubContainer2B: {
+    width: 346,
+    height: 360,
+    padding: 2,
+
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "column",
   },
-  BugReportTextIContent: {
-    height: 370,
-    width: '90%',
-    borderWidth: 1,
-    marginBottom: 10,
-    borderColor: '#83CBDB',
-    paddingLeft: 10,
-    letterSpacing: 2,
-    opacity: 0.5,
-    borderWidth: 3,
-     paddingLeft: 20,
+  contentContainer: {
+    width: 342,
+    height: 40,
+    padding: 2,
+
+    justifyContent: "center",
   },
-  ContentContainer: {
-    paddingTop: 20,
-    alignItems: 'center' 
+  contentText: {
+    fontSize: 16,
+    fontWeight: "400",
+    marginLeft: 10,
+    fontStyle: "italic",
   },
-  buttonContainer: {
-    backgroundColor: '#83CBDB',
-    width: '30%',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    marginTop: 20,
+  contentTextInputContainer: {
+    width: 342,
+    height: 310,
+    padding: 2,
+
+    justifyContent: "center",
+    alignItems: "center",
   },
+  TextInput2: {
+    height: 300,
+    width: 336,
+    fontSize: 17,
+    borderColor: "#83CBDB",
+    padding: 15,
+    borderRadius: 10,
+    borderWidth: 2,
+    textAlignVertical: "top",
+  },
+  BugReportSubContainer3: {
+    width: 350,
+    height: 60,
+    padding: 2,
+
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+
   sendText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
+    color: "white",
+    fontSize: 18,
+    fontWeight: "400",
   },
   sendbutton: {
-    paddingTop: 20,
-    paddingBottom: 60,
-    alignItems: 'center'
-  }
+    width: 180,
+    height: 50,
+    padding: 2,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "black",
+    backgroundColor: "#83CBDB",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default BugReport;
