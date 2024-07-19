@@ -1,11 +1,20 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { useTheme } from "../context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 import { lightTheme, darkTheme } from "../components/theme";
+import CustomButton from "../components/CustomButton";
 
 const WebDevelopment = () => {
   const { isDarkMode } = useTheme();
   const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const navigation = useNavigation();
+
+  const handleBookings = () => {
+    navigation.navigate("Appointment");
+  };
+
   return (
     <View
       style={[
@@ -53,13 +62,7 @@ const WebDevelopment = () => {
         </View>
       </View>
       <View style={styles.WebDevelopmentSubContainer3}>
-        <TouchableOpacity>
-          <View style={styles.Button}>
-            <Text style={[styles.ButtonText, { color: theme.text }]}>
-              BOOK AN APPOINTMENT
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <CustomButton title="Book appointment" onPress={handleBookings} />
       </View>
     </View>
   );
@@ -134,21 +137,6 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-  },
-  Button: {
-    width: 200,
-    height: 50,
-    padding: 2,
-
-    backgroundColor: "#83cbdb",
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "white",
   },
 });
 

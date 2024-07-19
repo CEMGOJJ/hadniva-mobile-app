@@ -2,10 +2,18 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../context/ThemeContext";
 import { lightTheme, darkTheme } from "../components/theme";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
 
-const RemoteDesktopSolutions = (route, navigation) => {
+const RemoteDesktopSolutions = () => {
   const { isDarkMode } = useTheme();
   const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const navigation = useNavigation();
+
+  const handleBookings = () => {
+    navigation.navigate("Appointment");
+  };
   return (
     <View
       style={[
@@ -55,7 +63,7 @@ const RemoteDesktopSolutions = (route, navigation) => {
       <View style={styles.RemoteDesktopSolutionsSubContainer3}>
         <TouchableOpacity>
           <View style={styles.Button}>
-            <Text style={styles.ButtonText}>BOOK AN APPOINTMENT</Text>
+            <CustomButton title="Book appointment" onPress={handleBookings} />
           </View>
         </TouchableOpacity>
       </View>
@@ -131,21 +139,6 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-  },
-  Button: {
-    width: 200,
-    height: 50,
-    padding: 2,
-
-    backgroundColor: "#83cbdb",
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "white",
   },
 });
 

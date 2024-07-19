@@ -39,6 +39,8 @@ import ChatSupport from "./src/screens/ChatSupport";
 import LogOut from "./src/screens/LogOut";
 import BugReport from "./src/screens/BugReport";
 import SendFeedback from "./src/screens/SendFeedback";
+import Appointment from "./src/screens/Appointment";
+import ProfileEdit from "./src/screens/ProfileEdit";
 
 // Importing Contexts
 import { ThemeProvider } from "./src/context/ThemeContext";
@@ -66,6 +68,8 @@ function HomeStack() {
       <Stack.Screen name="LogOut" component={LogOut} />
       <Stack.Screen name="BugReport" component={BugReport} />
       <Stack.Screen name="SendFeedback" component={SendFeedback} />
+      <Stack.Screen name="Payment" component={Payment} />
+      <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
     </Stack.Navigator>
   );
 }
@@ -83,8 +87,8 @@ function TabNavigator() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Payment") {
-            iconName = focused ? "wallet" : "wallet-outline";
+          } else if (route.name === "Appointment") {
+            iconName = focused ? "calendar" : "calendar-outline";
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
           }
@@ -103,7 +107,7 @@ function TabNavigator() {
         },
       })}
     >
-      <Tab.Screen name="Payment" component={Payment} />
+      <Tab.Screen name="Appointment" component={Appointment} />
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>

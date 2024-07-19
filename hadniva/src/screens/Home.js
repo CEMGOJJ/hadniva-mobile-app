@@ -195,7 +195,7 @@ const Home = () => {
                 </View>
                 <View style={styles.Two}>
                   <View style={styles.TwoBox}>
-                    <Text style={[(styles.ServiceName, { color: theme.text })]}>
+                    <Text style={[styles.ServiceName, { color: theme.text }]}>
                       Social Media Marketing
                     </Text>
                   </View>

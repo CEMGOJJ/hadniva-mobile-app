@@ -1,80 +1,141 @@
 import React from "react";
-import { View, StyleSheet, Text, SafeAreaView, Image } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
 
-const Profile = () => {
-  const date = new Date().toLocaleDateString();
+// Mock user data
+const mockUser = {
+  coverPhoto: require("../../assets/picture1.png"),
+  profilePhoto: require("../../assets/picture1.png"),
+  name: "John Doe",
+  bio: "Front-end developer passionate about creating beautiful user interfaces",
+  email: "johndoe@example.com",
+  joinDate: "2023-01-01",
+};
+
+const Profile = ({ user }) => {
+  const navigation = useNavigation();
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  // if (!user) {
+  //   return (
+  //     <View
+  //       style={[
+  //         styles.container,
+  //         {
+  //           backgroundColor: theme.background,
+  //           justifyContent: "center",
+  //           alignItems: "center",
+  //         },
+  //       ]}
+  //     >
+  //       <ActivityIndicator size="large" color={theme.primaryColor} />
+  //       <Text style={[styles.loadingText, { color: theme.text }]}>
+  //         Loading profile...
+  //       </Text>
+  //     </View>
+  //   );
+  // }
+
   return (
-    <SafeAreaView>
-      <View>
-        <Image
-          source={require("../../assets/picture1.png")}
-          style={styles.profileImage}
-        />
-        <View style={styles.editProfile}>
-          <Text style={styles.editProfileText}>Edit Profile</Text>
-        </View>
-        <Image
-          source={require("../../assets/Ellipse 9.png")}
-          style={styles.elipseImg}
-        />
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <Image source={mockUser.coverPhoto} style={styles.coverPhoto} />
+      <View style={styles.profileInfoContainer}>
+        <Image source={mockUser.profilePhoto} style={styles.profilePhoto} />
+        <Text style={[styles.name, { color: theme.text }]}>
+          {mockUser.name}
+        </Text>
+        <Text style={[styles.bio, { color: theme.secondaryText }]}>
+          {mockUser.bio}
+        </Text>
+        <Text style={[styles.email, { color: theme.secondaryText }]}>
+          {mockUser.email}
+        </Text>
+        <Text style={[styles.joinDate, { color: theme.secondaryText }]}>
+          Joined {formatDate(mockUser.joinDate)}
+        </Text>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={() =>
+            navigation.navigate(
+              "ProfileEdit",
+
+              { user: mockUser }
+            )
+          }
+        >
+          <Text style={styles.editButtonText}>Edit Profile</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.afterElipseImg}>
-        <Text style={styles.editProfileText}>Jennifer Akwele</Text>
-        <Text>jenbaddie78@outlook.com</Text>
-      </View>
-      <View style={styles.afterjeniffer}>
-        <Text style={styles.editProfileText}>Bio</Text>
-        <Text>UDKJAC IHAJBCIOAJ DCICHQDJDC HVGSD UUUHVDDV</Text>
-        <Text>UGDUADA HAG GG U G AUCU GASH XGX ffff thehjjh</Text>
-        <Text>HAKA BVD ADDJDBVC DHGAUhf hkehfkghf hgdjds hfgsjg hf</Text>
-        <Text>hello hello hello sweetie hello daddy</Text>
-        <Text>look whose coming in, straight from the jungle</Text>
-        <View style={{ height: 25 }} />
-        <View style={styles.datecontainer}>
-          <Icon name="calendar" size={24} color="#000" />
-          <Text style={styles.dateText}>Joined</Text>
-          <Text style={styles.dateText}>{date}</Text>
-        </View>
-      </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  profileImage: {
+  container: {
+    flex: 1,
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+  },
+  coverPhoto: {
     width: "100%",
+    height: 200,
   },
-  editProfile: {
-    alignItems: "flex-end",
-    padding: 10,
-  },
-  editProfileText: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  elipseImg: {
-    position: "absolute",
-    left: 20,
-    top: 180,
-    width: 130,
-    height: 130,
-  },
-  afterElipseImg: {
-    top: 45,
-    padding: 10,
-  },
-  afterjeniffer: {
-    top: 40,
-    padding: 10,
-  },
-  datecontainer: {
-    flexDirection: "row",
+  profileInfoContainer: {
     alignItems: "center",
+    padding: 20,
   },
-  dateText: {
-    marginLeft: 10,
-    fontSize: 18,
+  profilePhoto: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginTop: -60,
+    borderWidth: 3,
+    borderColor: "white",
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  bio: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 10,
+  },
+  email: {
+    fontSize: 14,
+    marginTop: 5,
+  },
+  joinDate: {
+    fontSize: 14,
+    marginTop: 5,
+  },
+  editButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: "#83CBDB",
+    borderRadius: 5,
+  },
+  editButtonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
 

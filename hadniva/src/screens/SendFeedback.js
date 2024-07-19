@@ -1,21 +1,20 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Dimensions } from "react-native";
 import { useTheme } from "../context/ThemeContext";
 import { lightTheme, darkTheme } from "../components/theme";
 import CustomTextInput from "../components/CustomTextInput";
+import CustomButton from "../components/CustomButton";
 
 const { width: windowWidth } = Dimensions.get("window");
 const baseWidth = 375;
 const scale = windowWidth / baseWidth;
 const screenHeight = Dimensions.get("window").height;
 const normalize = (size) => size * scale;
+
+const handleSend = () => {
+  // Implement your logout logic here
+  // Then navigate to login screen or home screen
+};
 
 const SendFeedback = () => {
   const { isDarkMode } = useTheme();
@@ -71,11 +70,7 @@ const SendFeedback = () => {
         </View>
       </View>
       <View style={styles.SendFeedbackSubContainer3}>
-        <TouchableOpacity>
-          <View style={styles.sendbutton}>
-            <Text style={styles.sendText}>SEND</Text>
-          </View>
-        </TouchableOpacity>
+        <CustomButton title="Send" onPress={handleSend} />
       </View>
     </View>
   );
@@ -201,23 +196,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "column",
-  },
-
-  sendText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "400",
-  },
-  sendbutton: {
-    width: 180,
-    height: 50,
-    padding: 2,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "black",
-    backgroundColor: "#83CBDB",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 
