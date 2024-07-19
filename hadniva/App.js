@@ -8,6 +8,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { useTheme } from "./src/context/ThemeContext";
+import { darkTheme, lightTheme } from "./src/components/theme";
 
 //Importing screen components
 // import SplashScreen1 from "./components/SplashScreen1";
@@ -69,6 +71,8 @@ function HomeStack() {
 }
 
 function TabNavigator() {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -90,10 +94,12 @@ function TabNavigator() {
         tabBarActiveTintColor: "#83CBDB",
         tabBarInactiveTintColor: "gray",
         tabBarStyle: {
-          borderTopWidth: 3,
+          borderTopWidth: 1,
+          borderTopColor: theme.borderColor,
           elevation: 10,
           shadowOpacity: 0.2,
           setOffset: { width: 0, height: -3 },
+          backgroundColor: theme.background,
         },
       })}
     >
@@ -105,14 +111,22 @@ function TabNavigator() {
 }
 
 function AppContent() {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
   return (
     <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
           headerTitle: "",
-          headerStyle: {},
+          headerTintColor: theme.text,
+          headerStyle: {
+            backgroundColor: theme.background,
+          },
           drawerActiveTintColor: "#83CBDB",
           drawerInactiveTintColor: "gray",
+          drawerStyle: {
+            backgroundColor: theme.background,
+          },
         }}
       >
         <Drawer.Screen

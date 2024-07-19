@@ -1,38 +1,55 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
 
 const SocialMediaMarketing = () => {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
   return (
-    <View style={styles.SocialMediaMarketingMainContainer}>
+    <View
+      style={[
+        styles.SocialMediaMarketingMainContainer,
+        { backgroundColor: theme.background },
+      ]}
+    >
       <View style={styles.SocialMediaMarketingSubContainer1}>
         <View style={styles.SocialMediaMarketingSubContainer1A}>
-          <Text style={styles.Title}>Social Media Marketing</Text>
+          <Text style={[styles.Title, { color: theme.text }]}>
+            Social Media Marketing
+          </Text>
         </View>
         <View style={styles.SocialMediaMarketingSubContainer1B}>
-          <Text style={styles.Description}>
+          <Text style={[styles.Description, { color: theme.text }]}>
             For social media marketing, we offer the following services:
           </Text>
         </View>
       </View>
       <View style={styles.SocialMediaMarketingSubContainer2}>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>
+          <Text style={[styles.Description, { color: theme.text }]}>
             1. Social Media Strategy and Planning
           </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>
+          <Text style={[styles.Description, { color: theme.text }]}>
             2. Content Creation and Management
           </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>3. Social Media Advertising</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            3. Social Media Advertising
+          </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>4. Influencer Marketing</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            4. Influencer Marketing
+          </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>5. Analytics and Reporting</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            5. Analytics and Reporting
+          </Text>
         </View>
       </View>
       <View style={styles.SocialMediaMarketingSubContainer3}>

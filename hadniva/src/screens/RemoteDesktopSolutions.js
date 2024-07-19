@@ -1,36 +1,55 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { useTheme } from "../context/ThemeContext";
+import { lightTheme, darkTheme } from "../components/theme";
 
 const RemoteDesktopSolutions = (route, navigation) => {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
   return (
-    <View style={styles.RemoteDesktopSolutionsMainContainer}>
+    <View
+      style={[
+        styles.RemoteDesktopSolutionsMainContainer,
+        { backgroundColor: theme.background },
+      ]}
+    >
       <View style={styles.RemoteDesktopSolutionsSubContainer1}>
         <View style={styles.RemoteDesktopSolutionsSubContainer1A}>
-          <Text style={styles.Title}>Remote Desktop Solutions</Text>
+          <Text style={[styles.Title, { color: theme.text }]}>
+            Remote Desktop Solutions
+          </Text>
         </View>
         <View style={styles.RemoteDesktopSolutionsSubContainer1B}>
-          <Text style={styles.Description}>
+          <Text style={[styles.Description, { color: theme.text }]}>
             For remote desktop solutions, we offer the following services:
           </Text>
         </View>
       </View>
       <View style={styles.RemoteDesktopSolutionsSubContainer2}>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>1. Remote IT Support</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            1. Remote IT Support
+          </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>2. Cloud Computing Services</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            2. Cloud Computing Services
+          </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>3. Virtual Machine Services</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            3. Virtual Machine Services
+          </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>
+          <Text style={[styles.Description, { color: theme.text }]}>
             4. Data Security and Backup Solutions
           </Text>
         </View>
         <View style={styles.ListOfServices}>
-          <Text style={styles.Description}>5. Remote Acess Solutions</Text>
+          <Text style={[styles.Description, { color: theme.text }]}>
+            5. Remote Acess Solutions
+          </Text>
         </View>
       </View>
       <View style={styles.RemoteDesktopSolutionsSubContainer3}>
