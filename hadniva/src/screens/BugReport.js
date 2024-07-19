@@ -11,6 +11,9 @@ const BugReport = () => {
   return (
     <SafeAreaView style={styles.BugReportMainContainer}>
       <View style={styles.subjectContainer}>
+        <Text style={[styles.subjectText, { fontSize: 25 }]}>Bug Report</Text>
+      </View>
+      <View style={styles.subjectContainer}>
       <Text style={styles.subjectText}>Subject</Text>
       </View>
       <View style={styles.textInputContainer}>
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   subjectText: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: "bold",
     paddingLeft: 20
   },
