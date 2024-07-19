@@ -23,7 +23,7 @@ const SendFeedback = () => {
   return (
     <View
       style={[
-        styles.BugReportMainContainer,
+        styles.SendFeedbackMainContainer,
         { backgroundColor: theme.background },
       ]}
     >
