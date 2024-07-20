@@ -41,6 +41,8 @@ import BugReport from "./src/screens/BugReport";
 import SendFeedback from "./src/screens/SendFeedback";
 import Appointment from "./src/screens/Appointment";
 import ProfileEdit from "./src/screens/ProfileEdit";
+import KnowledgeBase from "./src/screens/KnowledgeBase";
+import VideoTutorials from "./src/screens/VideoTutorials";
 
 // Importing Contexts
 import { ThemeProvider } from "./src/context/ThemeContext";
@@ -70,6 +72,8 @@ function HomeStack() {
       <Stack.Screen name="SendFeedback" component={SendFeedback} />
       <Stack.Screen name="Payment" component={Payment} />
       <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
+      <Stack.Screen name="KnowledgeBase" component={KnowledgeBase} />
+      <Stack.Screen name="VideoTutorials" component={VideoTutorials} />
     </Stack.Navigator>
   );
 }
@@ -170,7 +174,7 @@ function AppContent() {
           }}
         />
         <Drawer.Screen
-          name="Resources"
+          name="Resources Center"
           component={Resources}
           options={{
             drawerIcon: ({ color, size }) => (
