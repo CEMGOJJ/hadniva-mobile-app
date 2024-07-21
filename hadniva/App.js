@@ -10,6 +10,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useTheme } from "./src/context/ThemeContext";
 import { darkTheme, lightTheme } from "./src/components/theme";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 //Importing screen components
 // import SplashScreen1 from "./components/SplashScreen1";
@@ -43,6 +45,7 @@ import Appointment from "./src/screens/Appointment";
 import ProfileEdit from "./src/screens/ProfileEdit";
 import KnowledgeBase from "./src/screens/KnowledgeBase";
 import VideoTutorials from "./src/screens/VideoTutorials";
+import Blog from "./src/screens/Blog";
 
 // Importing Contexts
 import { ThemeProvider } from "./src/context/ThemeContext";
@@ -52,16 +55,39 @@ import { ThemeProvider } from "./src/context/ThemeContext";
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
-const RootStack = createNativeStackNavigator();
 
 function HomeStack() {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? darkTheme : lightTheme;
+
   return (
     <Stack.Navigator
-      screenOptions={({ navigation }) => ({
-        headerShown: false,
+      screenOptions={({ navigation, route }) => ({
+        headerShown: true,
+        headerLeft: () => (
+          <Ionicons
+            name="arrow-back"
+            size={24}
+            color={theme.text}
+            onPress={() =>
+              navigation.canGoBack()
+                ? navigation.goBack()
+                : navigation.navigate("EntireHomeScreen")
+            }
+          />
+        ),
+        headerTitle: route.name,
+        headerStyle: {
+          backgroundColor: theme.background,
+        },
+        headerTintColor: theme.text,
       })}
     >
-      <Stack.Screen name="EntireHomeScreen" component={Home} />
+      <Stack.Screen
+        name="EntireHomeScreen"
+        component={Home}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="Remote" component={RemoteDesktopSolutions} />
       <Stack.Screen name="Web" component={WebDevelopment} />
       <Stack.Screen name="Social" component={SocialMediaMarketing} />
@@ -74,6 +100,7 @@ function HomeStack() {
       <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
       <Stack.Screen name="KnowledgeBase" component={KnowledgeBase} />
       <Stack.Screen name="VideoTutorials" component={VideoTutorials} />
+      <Stack.Screen name="Blog" component={Blog} />
     </Stack.Navigator>
   );
 }
@@ -121,30 +148,38 @@ function TabNavigator() {
 function AppContent() {
   const { isDarkMode } = useTheme();
   const theme = isDarkMode ? darkTheme : lightTheme;
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        screenOptions={{
-          headerTitle: "",
-          headerTintColor: theme.text,
-          headerStyle: {
-            backgroundColor: theme.background,
-          },
-          drawerActiveTintColor: "#83CBDB",
-          drawerInactiveTintColor: "gray",
-          drawerStyle: {
-            backgroundColor: theme.background,
-          },
+        screenOptions={({ route }) => {
+          const routeName = getFocusedRouteNameFromRoute(route);
+          return {
+            headerShown: !routeName || routeName === "EntireHomeScreen",
+            headerTitle: "",
+            headerTintColor: theme.text,
+            headerStyle: {
+              backgroundColor: theme.background,
+            },
+            drawerActiveTintColor: "#83CBDB",
+            drawerInactiveTintColor: "gray",
+            drawerStyle: {
+              backgroundColor: theme.background,
+            },
+          };
         }}
       >
         <Drawer.Screen
           name="Main"
           component={TabNavigator}
-          options={{
+          options={({ route }) => ({
             drawerIcon: ({ color, size }) => (
               <Icon name="explore" color={color} size={size} />
             ),
-          }}
+            headerShown:
+              !getFocusedRouteNameFromRoute(route) ||
+              getFocusedRouteNameFromRoute(route) === "EntireHomeScreen",
+          })}
         />
         <Drawer.Screen
           name="Profile"
