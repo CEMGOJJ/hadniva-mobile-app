@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Switch, SafeAreaView } from "react-native";
 import {
   Entypo,
   MaterialCommunityIcons,
@@ -15,7 +15,7 @@ const Settings = () => {
   const theme = isDarkMode ? darkTheme : lightTheme;
 
   return (
-    <View
+    <SafeAreaView
       style={[
         styles.SettingsMainContainer,
         { backgroundColor: theme.background },
@@ -202,7 +202,7 @@ const Settings = () => {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
