@@ -567,8 +567,7 @@ function HomeStack() {
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name ="Settings" component={Settings} />
       <Stack.Screen name="Appointment" component={Appointment} />
-
-    </Stack.Navigator>
+     </Stack.Navigator>
   );
 }
 
