@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { useTheme } from "./src/context/ThemeContext";
 import { darkTheme, lightTheme } from "./src/components/theme";
 
-// Importing screen components
+// Importing screen componentis
 import LogIn from "./src/screens/LogIn";
 import Home from "./src/screens/Home";
 import WebDevelopment from "./src/screens/WebDevelopment";
