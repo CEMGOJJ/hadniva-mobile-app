@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+
+
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +40,8 @@ const LogIn = () => {
   const handleForgotPassword = () => {
     Alert.alert("Forgot Password", "Password reset instructions sent to your email.");
   };
+
+  
 
   return (
     <View style={styles.LogInMainContainer}>
