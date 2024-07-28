@@ -1,5 +1,5 @@
-
 /*
+
 import React, { useState } from "react";
 import {
   View,
@@ -346,7 +346,7 @@ const SignUp = () => {
     }
 
     if (!checkPasswordStrength(password)) {
-      Alert.alert("Error", "Password does not meet the required criteria");
+      Alert.alert("Error", "Password does not meet all the required criteria");
       return;
     }
 
@@ -411,21 +411,21 @@ const SignUp = () => {
           onChangeText={setConfirmPassword}
         />
         <View style={styles.passwordCriteria}>
-          <Text style={styles.criteriaTitle}>Password must have:</Text>
-          <Text style={[styles.criteriaText, passwordCriteria.length && styles.criteriaMetText]}>
-            ✓ 8-20 characters
+          <Text style={styles.criteriaTitle}>Password requirements:</Text>
+          <Text style={styles.criteriaText}>
+            {passwordCriteria.length ? "✅" : "❌"} 8-20 characters
           </Text>
-          <Text style={[styles.criteriaText, passwordCriteria.uppercase && styles.criteriaMetText]}>
-            ✓ At least one uppercase letter
+          <Text style={styles.criteriaText}>
+            {passwordCriteria.uppercase ? "✅" : "❌"} At least one uppercase letter
           </Text>
-          <Text style={[styles.criteriaText, passwordCriteria.lowercase && styles.criteriaMetText]}>
-            ✓ At least one lowercase letter
+          <Text style={styles.criteriaText}>
+            {passwordCriteria.lowercase ? "✅" : "❌"} At least one lowercase letter
           </Text>
-          <Text style={[styles.criteriaText, passwordCriteria.number && styles.criteriaMetText]}>
-            ✓ At least one number
+          <Text style={styles.criteriaText}>
+            {passwordCriteria.number ? "✅" : "❌"} At least one number
           </Text>
-          <Text style={[styles.criteriaText, passwordCriteria.specialChar && styles.criteriaMetText]}>
-            ✓ At least one special character
+          <Text style={styles.criteriaText}>
+            {passwordCriteria.specialChar ? "✅" : "❌"} At least one special character
           </Text>
         </View>
       </View>
@@ -472,7 +472,6 @@ const SignUp = () => {
 };
 
 const styles = StyleSheet.create({
-  // ... (previous styles remain unchanged)
   SignMainContainer: {
     display: "flex",
     flexDirection: "column",
@@ -522,8 +521,8 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
   },
   SignSubContainer2: {
-    width: 350,
-    height: 280,
+    width: 380,
+    height: 400,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
@@ -531,7 +530,7 @@ const styles = StyleSheet.create({
   },
   SignSubContainer2A: {
     width: 346,
-    height: 200,
+    height: 330,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
@@ -642,10 +641,7 @@ const styles = StyleSheet.create({
   },
   criteriaText: {
     fontSize: 12,
-    color: 'grey',
-  },
-  criteriaMetText: {
-    color: 'green',
+    marginBottom: 2,
   },
 });
 
