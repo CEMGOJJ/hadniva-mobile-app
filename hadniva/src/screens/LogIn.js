@@ -10,26 +10,35 @@ import {
   Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    if (email && password) {
-      // Here you would typically validate the credentials with your backend
-      // For this example, we'll just simulate a successful login
-      Alert.alert("Login Successful", `Welcome back, ${email}!`, [
-        {
-          text: "OK",
-          onPress: () => navigation.replace("MainApp")
-        }
-      ]);
-    } else {
+  const handleLogin = async () => {
+    if (!email || !password) {
       Alert.alert("Error", "Please enter both email and password");
+      return;
+    }
+
+    try {
+      const storedProfile = await AsyncStorage.getItem('userProfile');
+      if (storedProfile) {
+        const { email: storedEmail, password: storedPassword } = JSON.parse(storedProfile);
+        if (email === storedEmail && password === storedPassword) {
+          // Navigate to OTP verification
+          navigation.navigate("OTPEmail", { email, isSignUp: false });
+        } else {
+          Alert.alert("Error", "Invalid email or password");
+        }
+      } else {
+        Alert.alert("Error", "No user profile found. Please sign up.");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      Alert.alert("Error", "Failed to log in. Please try again.");
     }
   };
 
@@ -40,8 +49,6 @@ const LogIn = () => {
   const handleForgotPassword = () => {
     Alert.alert("Forgot Password", "Password reset instructions sent to your email.");
   };
-
-  
 
   return (
     <View style={styles.LogInMainContainer}>
@@ -66,6 +73,8 @@ const LogIn = () => {
             placeholder="Email"
             value={email}
             onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
           <TextInput
             style={styles.TextInput}
@@ -290,6 +299,6 @@ const styles = StyleSheet.create({
     width: 346,
     height: 35,
   },
- });
+});
 
 export default LogIn;

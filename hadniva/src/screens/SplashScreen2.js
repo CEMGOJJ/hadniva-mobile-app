@@ -1,12 +1,16 @@
+
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const SplashScreen2 = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.SplashScreen2MainContainer}>
       <View style={styles.SplashScreenSubContainer1}>
-        <Image source={require("../assets/splashcreen1-logo.png")} />
+        <Image source={require("../asset/splashcreen1-logo.png")} />
       </View>
       <View style={styles.SplashScreenSubContainer2}>
         <View style={styles.SplashScreenSubContainer2A}>
@@ -19,14 +23,16 @@ const SplashScreen2 = () => {
           <Text style={styles.Text3}>
             We are a cutting-edge agency in Ghana, offering a range of services
             including the creation of stunning and user-friendly websites for
-            businesses of all sizes, social media marketting, and remote desktop
+            businesses of all sizes, social media marketing, and remote desktop
             solutions.
           </Text>
         </View>
       </View>
       <View style={styles.SplashScreenSubContainer3}>
         <View style={styles.SplashScreenSubContainer3A}>
-          <Feather name="chevrons-right" size={34} color="black" />
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Feather name="chevrons-right" size={34} color="black" />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

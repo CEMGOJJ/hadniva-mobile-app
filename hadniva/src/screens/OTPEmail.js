@@ -1,164 +1,78 @@
-import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
 
-const OTPEmail = () => {
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+
+const OTPEmail = ({ route }) => {
+  const [otp, setOtp] = useState('');
+  const navigation = useNavigation();
+  const { email, isSignUp } = route.params;
+
+  const handleVerify = () => {
+    // In a real app, you'd verify the OTP with your backend
+    if (otp === '1234') { // Example OTP
+      if (isSignUp) {
+        navigation.navigate('SplashScreen1');
+      } else {
+        navigation.replace('MainApp');
+      }
+    } else {
+      Alert.alert('Error', 'Invalid OTP. Please try again.');
+    }
+  };
+
   return (
-    <View style={styles.OTPEmailMainContainer}>
-      <View style={styles.OTPEmailSubContainer1}>
-        <View style={styles.OTPEmailSubContainer1A}></View>
-        <View style={styles.OTPEmailSubContainer1B}>
-          <View style={styles.TextBox1}>
-            <Text style={styles.Text1}>OTP Verification</Text>
-          </View>
-          <View style={styles.TextBox2}>
-            <Text style={styles.Text2}>
-              We'll send a one time password to this email.
-            </Text>
-            <Text style={styles.Text2}>Enter your email.</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.OTPEmailSubContainer2}>
-        <TextInput style={styles.TextInput}></TextInput>
-      </View>
-      <View style={styles.OTPEmailSubContainer3}>
-        <View style={styles.OTPEmailSubContainer3A}>
-          <Text style={styles.Recommend}>Use your number instead?</Text>
-        </View>
-        <View style={styles.OTPEmailSubContainer3B}>
-          <TouchableOpacity>
-            <View style={styles.OTPEmailButton}>
-              <Text style={styles.ButtonText}>GET OTP</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.OTPEmailSubContainer3C}></View>
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.title}>Enter OTP</Text>
+      <Text style={styles.subtitle}>An OTP has been sent to {email}</Text>
+      <TextInput
+        style={styles.input}
+        value={otp}
+        onChangeText={setOtp}
+        placeholder="Enter OTP"
+        keyboardType="numeric"
+      />
+      <TouchableOpacity style={styles.button} onPress={handleVerify}>
+        <Text style={styles.buttonText}>Verify</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  OTPEmailMainContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: "100%",
-    width: "100%",
-    backgroundColor: "white",
-    paddingTop: 40,
-    alignSelf: "center",
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
-  OTPEmailSubContainer1: {
-    width: 350,
-    height: 140,
-
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 2,
-  },
-  OTPEmailSubContainer1A: {
-    width: 346,
-    height: 30,
-  },
-  OTPEmailSubContainer1B: {
-    width: 346,
-    height: 100,
-
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 2,
-  },
-  TextBox1: {
-    width: 342,
-    height: 30,
-  },
-  TextBox2: {
-    width: 342,
-    height: 50,
-  },
-  Text1: {
+  title: {
     fontSize: 24,
-    fontWeight: "700",
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
-  Text2: {
+  subtitle: {
     fontSize: 16,
-    opacity: 0.5,
-    fontWeight: "normal",
+    marginBottom: 20,
   },
-  OTPEmailSubContainer2: {
-    width: 350,
-    height: 240,
-
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 2,
+  input: {
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 20,
   },
-  TextInput: {
-    borderBottomWidth: 2,
-    borderColor: "grey",
-    height: 50,
-    width: 280,
-    paddingLeft: 20,
-    fontSize: 18,
-
-    textAlign: "center",
-  },
-  OTPEmailSubContainer3: {
-    width: 350,
-    height: 300,
-
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    padding: 2,
-  },
-  OTPEmailSubContainer3A: {
-    width: 346,
-    height: 30,
-
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Recommend: {
-    fontSize: 16,
-    opacity: 0.3,
-  },
-  OTPEmailSubContainer3B: {
-    width: 346,
-    height: 60,
-
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  OTPEmailButton: {
-    borderWidth: 0.5,
-    borderColor: "grey",
-    height: 50,
-    width: 280,
-    backgroundColor: "#ADE7EE",
-    alignItems: "center",
-    justifyContent: "center",
+  button: {
+    backgroundColor: '#ADE7EE',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 5,
   },
-  ButtonText: {
-    fontSize: 20,
-    fontWeight: "700",
-    opacity: 0.8,
-  },
-  OTPEmailSubContainer3C: {
-    width: 346,
-    height: 160,
+  buttonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
