@@ -13,6 +13,9 @@ import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import emailjs from 'emailjs-com';
+import { Linking } from 'react-native';
+
+emailjs.init("YOUR_USER_ID");
 
 const Contact = () => {
   const navigation = useNavigation();
@@ -22,6 +25,14 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+
+  const handlePhonePress = () => {
+    Linking.openURL('tel:05598-823-861');
+  };
+  
+  const handleEmailPress = () => {
+    Linking.openURL('mailto:info@hadnivamultimedia.com');
+  };
 
   const handleSend = () => {
     if (!firstName || !lastName || !email || !phone || !message) {
@@ -37,6 +48,7 @@ const Contact = () => {
       message: message,
     };
 
+    
     emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_USER_ID')
       .then((result) => {
         console.log(result.text);
@@ -50,7 +62,7 @@ const Contact = () => {
         console.log(error.text);
         Alert.alert('Error', 'Failed to send message. Please try again.');
       });
-  };
+    };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -63,20 +75,24 @@ const Contact = () => {
         </Text>
 
         <View style={styles.contactInfo}>
-          <View style={styles.contactItem}>
-            <Ionicons name="mail-outline" size={24} color="black" />
-            <Text style={styles.contactText}>info@hadnivamultimedia.com</Text>
-          </View>
+        <TouchableOpacity onPress={handleEmailPress}>
+  <View style={styles.contactItem}>
+    <Ionicons name="mail-outline" size={24} color="black" />
+    <Text style={styles.contactText}>info@hadnivamultimedia.com</Text>
+  </View>
+</TouchableOpacity>
           <View style={styles.contactItem}>
             <Ionicons name="location-outline" size={24} color="black" />
             <Text style={styles.contactText}>
               41, Ben Quao Mensah Street, Tesano
             </Text>
           </View>
-          <View style={styles.contactItem}>
-            <Ionicons name="call-outline" size={24} color="black" />
-            <Text style={styles.contactText}>0800-423-6482</Text>
-          </View>
+          <TouchableOpacity onPress={handlePhonePress}>
+  <View style={styles.contactItem}>
+    <Ionicons name="call-outline" size={24} color="black" />
+    <Text style={styles.contactText}>0559-823-861</Text>
+  </View>
+</TouchableOpacity>
         </View>
         <View style={styles.firstName}>
           <TextInput 
