@@ -181,9 +181,8 @@ const PasswordRecoveryEmail = () => {
   const handleSendRecoveryEmail = () => {
     if (email) {
       // Here you would typically call an API to send the recovery email
-      // For now, we'll just simulate it and navigate to the OTP screen
       Alert.alert("Recovery Email Sent", "Please check your email for further instructions.");
-      navigation.navigate("OTPEmail", { email, isSignUp: false, isPasswordRecovery: true });
+      navigation.navigate("PasswordRecoveryScreen");
     } else {
       Alert.alert("Error", "Please enter your email address");
     }

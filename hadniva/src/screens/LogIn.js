@@ -353,7 +353,7 @@ const LogIn = () => {
   };
 
   const handleForgotPassword = () => {
-    navigation.navigate("PasswordRecoveryScreen");
+    navigation.navigate("PasswordRecoveryEmail");
   };
 
   return (

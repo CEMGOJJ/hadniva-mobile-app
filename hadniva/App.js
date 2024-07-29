@@ -92,7 +92,7 @@ function HomeStack() {
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Appointment" component={Appointment} />
-      <Stack.Screen name="PasswordRecoveryEmail" component={PasswordRecoveryEmail} />
+     <Stack.Screen name="PasswordRecoveryEmail" component={PasswordRecoveryEmail} />
         <Stack.Screen name="PasswordRecoveryScreen" component={PasswordRecoveryScreen} />
     </Stack.Navigator>
   );
@@ -236,6 +236,8 @@ function AppContent() {
         <Stack.Screen name="SplashScreen1" component={SplashScreen1} />
         <Stack.Screen name="SplashScreen2" component={SplashScreen2} />
         <Stack.Screen name="MainApp" component={MainAppNavigator} />
+        <Stack.Screen name="PasswordRecoveryEmail" component={PasswordRecoveryEmail} />
+        <Stack.Screen name="PasswordRecoveryScreen" component={PasswordRecoveryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
