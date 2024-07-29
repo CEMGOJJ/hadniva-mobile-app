@@ -40,7 +40,7 @@ import SplashScreen1 from "./src/screens/SplashScreen1";
 import SplashScreen2 from "./src/screens/SplashScreen2";
 import PasswordRecoveryEmail from "./src/screens/PasswordRecoveryEmail";
 import PasswordRecoveryScreen from "./src/screens/PasswordRecoveryScreen";
-
+import NotificationDisplay from "./src/screens/NotificationDisplay";
 // Importing Contexts
 import { ThemeProvider } from "./src/context/ThemeContext";
 
@@ -93,7 +93,8 @@ function HomeStack() {
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Appointment" component={Appointment} />
      <Stack.Screen name="PasswordRecoveryEmail" component={PasswordRecoveryEmail} />
-        <Stack.Screen name="PasswordRecoveryScreen" component={PasswordRecoveryScreen} />
+      <Stack.Screen name="PasswordRecoveryScreen" component={PasswordRecoveryScreen} />
+      <Stack.Screen name="NotificationDisplay" component={NotificationDisplay} />
     </Stack.Navigator>
   );
 }

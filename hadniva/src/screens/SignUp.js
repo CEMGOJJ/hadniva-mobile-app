@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { addNotification } from '../screens/notificationService';
+
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -76,6 +78,11 @@ const SignUp = () => {
       Alert.alert("Error", "Failed to sign up. Please try again.");
     }
   };
+  addNotification({
+    id: Date.now().toString(),
+    title: 'Welcome to our app!',
+    content: 'NotificationDisplay',
+  });
 
   return (
     <ScrollView contentContainerStyle={styles.SignMainContainer}>
