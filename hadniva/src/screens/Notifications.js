@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 });
 
 export default Notifications;
-*/
+*//*
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -161,4 +161,100 @@ const styles = StyleSheet.create({
   },
 });
 
+export default Notifications;
+*/
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, StyleSheet, Text, FlatList, RefreshControl, } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import NotificationItem from '../components/NotificationItem';
+import { getNotifications, removeNotification } from '../screens/notificationService';
+import { useFocusEffect } from '@react-navigation/native';
+
+const Notifications = ({ navigation }) => {
+  const [notifications, setNotifications] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchNotifications = useCallback(async () => {
+    try {
+      const fetchedNotifications = await getNotifications();
+      setNotifications(fetchedNotifications);
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchNotifications();
+  }, [fetchNotifications]);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchNotifications();
+    }, [fetchNotifications])
+  );
+
+  const handleNotificationPress = useCallback((notification) => {
+    if (notification.content === 'NotificationDisplay') {
+      navigation.navigate('NotificationDisplay', { notification });
+    } else {
+      // Handle other types of notifications
+    }
+  }, [navigation]);
+
+  const handleRemoveNotification = useCallback(async (id) => {
+    const success = await removeNotification(id);
+    if (success) {
+      await fetchNotifications();
+    }
+  }, [fetchNotifications]);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await fetchNotifications();
+    setRefreshing(false);
+  }, [fetchNotifications]);
+
+  if (notifications.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Icon name="notifications-off" size={30} color="black" />
+        <Text style={styles.text}>You have No New Notifications</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={notifications}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <NotificationItem
+            title={item.title}
+            onPress={() => handleNotificationPress(item)}
+            onRemove={() => handleRemoveNotification(item.id)}
+          />
+        )}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+      />
+    </View>
+  );
+};
+
+// ... (styles remain unchanged)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 18,
+  },
+});
 export default Notifications;

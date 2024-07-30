@@ -1,5 +1,5 @@
 
-
+/*
 import React, { useState } from "react";
 import {
   View,
@@ -187,6 +187,202 @@ const SignUp = () => {
     </ScrollView>
   );
 };
+*/
+
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  Alert,
+  ScrollView,
+  StyleSheet
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { addNotification } from '../screens/notificationService';
+
+const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordCriteria, setPasswordCriteria] = useState({
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    number: false,
+    specialChar: false,
+  });
+  const navigation = useNavigation();
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const checkPasswordStrength = (password) => {
+    const criteria = {
+      length: password.length >= 8 && password.length <= 20,
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /\d/.test(password),
+      specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    };
+    setPasswordCriteria(criteria);
+    return Object.values(criteria).every(Boolean);
+  };
+
+  const handleSignUp = async () => {
+    if (!email || !password || !confirmPassword) {
+      Alert.alert("Error", "Please fill in all fields");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      Alert.alert("Error", "Please enter a valid email address");
+      return;
+    }
+
+    if (!checkPasswordStrength(password)) {
+      Alert.alert("Error", "Password does not meet all the required criteria");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    try {
+      const userProfile = { email, password };
+      await AsyncStorage.setItem('userProfile', JSON.stringify(userProfile));
+      
+      // Add welcome notification
+      const notificationAdded = await addNotification({
+        id: Date.now().toString(),
+        title: 'Welcome to our app!',
+        content: 'NotificationDisplay',
+        message: 'Thank you for signing up. We hope you enjoy using our app!',
+      });
+
+      if (!notificationAdded) {
+        console.warn("Failed to add welcome notification");
+      }
+
+      // Navigate to OTP verification
+      navigation.navigate("OTPEmail", { email, isSignUp: true });
+    } catch (error) {
+      console.error("Error during sign up:", error);
+      Alert.alert("Error", "Failed to sign up. Please try again.");
+    }
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.SignMainContainer}>
+      <View style={styles.SignSubContainer1}>
+        <View style={styles.SignSubContainer1A}></View>
+        <View style={styles.SignSubContainer1B}>
+          <View style={styles.TextBox1}>
+            <Text style={styles.Text1}>Create an account</Text>
+          </View>
+          <View style={styles.TextBox2}>
+            <Text style={styles.Text2}>
+              Create your account, it takes less than a minute
+            </Text>
+            <Text style={styles.Text2}>Enter your email and password</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.SignSubContainer2}>
+        <View style={styles.SignSubContainer2A}>
+          <TextInput 
+            style={styles.TextInput} 
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => {
+              setPassword(text);
+              checkPasswordStrength(text);
+            }}
+          />
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Confirm Password"
+            secureTextEntry
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+          <View style={styles.passwordCriteria}>
+            <Text style={styles.criteriaTitle}>Password requirements:</Text>
+            <Text style={styles.criteriaText}>
+              {passwordCriteria.length ? "✅" : "❌"} 8-20 characters
+            </Text>
+            <Text style={styles.criteriaText}>
+              {passwordCriteria.uppercase ? "✅" : "❌"} At least one uppercase letter
+            </Text>
+            <Text style={styles.criteriaText}>
+              {passwordCriteria.lowercase ? "✅" : "❌"} At least one lowercase letter
+            </Text>
+            <Text style={styles.criteriaText}>
+              {passwordCriteria.number ? "✅" : "❌"} At least one number
+            </Text>
+            <Text style={styles.criteriaText}>
+              {passwordCriteria.specialChar ? "✅" : "❌"} At least one special character
+            </Text>
+          </View>
+        </View>
+        <View style={styles.SignSubContainer2B}>
+          <TouchableOpacity onPress={handleSignUp}>
+            <View style={styles.SignButton}>
+              <Text style={styles.ButtonText}>Sign up</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.SignSubContainer3}>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3A}>
+          <View style={styles.Line}></View>
+          <Text style={styles.OrText}>Or sign up with</Text>
+          <View style={styles.Line}></View>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3B}>
+          <View style={styles.IconsBox}>
+            <TouchableOpacity style={styles.Box}>
+              <Image source={require("../asset/google.png")} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Box}>
+              <Image source={require("../asset/linkedin.png")} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Box}>
+              <Image source={require("../asset/apple.png")} />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
+        <View style={styles.SignSubContainer3C}>
+          <Text style={styles.DontText}>Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text style={styles.LoginText}>Login</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.SignSubContainer3D}></View>
+      </View>
+    </ScrollView>
+  );
+};
+// Styles remain unchanged
 
 const styles = StyleSheet.create({
   SignMainContainer: {
