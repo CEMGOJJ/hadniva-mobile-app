@@ -41,6 +41,8 @@ import SplashScreen2 from "./src/screens/SplashScreen2";
 import PasswordRecoveryEmail from "./src/screens/PasswordRecoveryEmail";
 import PasswordRecoveryScreen from "./src/screens/PasswordRecoveryScreen";
 import NotificationDisplay from "./src/screens/NotificationDisplay";
+import NotificationDetails from "./src/screens/NotificationDetails";
+import NotificationManager from "./src/screens/NotificationManager";
 // Importing Contexts
 import { ThemeProvider } from "./src/context/ThemeContext";
 
@@ -95,6 +97,7 @@ function HomeStack() {
      <Stack.Screen name="PasswordRecoveryEmail" component={PasswordRecoveryEmail} />
       <Stack.Screen name="PasswordRecoveryScreen" component={PasswordRecoveryScreen} />
       <Stack.Screen name="NotificationDisplay" component={NotificationDisplay} />
+      <Stack.Screen name="NotificationDetails" component={NotificationDetails} />
     </Stack.Navigator>
   );
 }
